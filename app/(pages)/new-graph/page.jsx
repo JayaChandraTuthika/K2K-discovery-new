@@ -327,7 +327,9 @@ const OSINTGraphInner = () => {
   }, [nodes]);
 
   useEffect(() => {
-    fitView(fitViewOptions);
+    if (nodes.length > 0) {
+      fitView(fitViewOptions);
+    }
   }, [nodes, fitView]);
 
   return (
