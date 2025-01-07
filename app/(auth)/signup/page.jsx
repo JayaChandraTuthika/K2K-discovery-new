@@ -35,7 +35,7 @@ const Signup = () => {
     signIn(
       "google",
       // { redirect: false }
-      { callbackUrl: "/signup" }
+      { callbackUrl: "/get-to-know" }
     );
   };
 

@@ -16,7 +16,6 @@ const handler = NextAuth({
       },
       async authorize(credentials) {
         // Add your own logic here to validate credentials
-        // This is just a placeholder example
         if (credentials?.email === "user@example.com" && credentials?.password === "password") {
           return { id: "1", name: "J Smith", email: "user@example.com" };
         }
