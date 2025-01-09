@@ -17,6 +17,7 @@ import ReactFlow, {
 import "reactflow/dist/style.css";
 import { FaUser, FaBuilding, FaGlobe, FaEnvelope, FaPhone } from "react-icons/fa";
 import { mockData } from "./mockGraphdata";
+import CustomNode from "@/components/CustomNode";
 
 // const mockData = {
 //   id: "root",
@@ -59,38 +60,38 @@ import { mockData } from "./mockGraphdata";
 //   ],
 // };
 
-const CustomNode = ({ data }) => {
-  const Icon = data.icon || FaUser;
-  // console.log(data);
-  return (
-    <div className="custom-node bg-secondary text-slate-950 rounded-sm p-1 px-2 text-xs">
-      <Handle type="target" position={Position.Left} />
-      <div onClick={data.onClick} className="flex gap-2 justify-center items-center">
-        <Icon className="node-icon" />
-        <span className="node-label">{data.label}</span>
-        {data.children && data.children.length > 0 && (
-          <span
-            className="node-childcount"
-            style={{
-              backgroundColor: "#0bf499",
-              color: "black",
-              borderRadius: "10px",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              width: "20px",
-              height: "20px",
-              fontSize: "8px",
-            }}
-          >
-            {data.children.length}
-          </span>
-        )}
-      </div>
-      <Handle type="source" position={Position.Right} />
-    </div>
-  );
-};
+// const CustomNode = ({ data }) => {
+//   const Icon = data.icon || FaUser;
+//   // console.log(data);
+//   return (
+//     <div className="custom-node bg-secondary text-slate-950 rounded-sm p-1 px-2 text-xs">
+//       <Handle type="target" position={Position.Left} />
+//       <div onClick={data.onClick} className="flex gap-2 justify-center items-center">
+//         <Icon className="node-icon" />
+//         <span className="node-label">{data.label}</span>
+//         {data.children && data.children.length > 0 && (
+//           <span
+//             className="node-childcount"
+//             style={{
+//               backgroundColor: "#0bf499",
+//               color: "black",
+//               borderRadius: "10px",
+//               display: "flex",
+//               justifyContent: "center",
+//               alignItems: "center",
+//               width: "20px",
+//               height: "20px",
+//               fontSize: "8px",
+//             }}
+//           >
+//             {data.children.length}
+//           </span>
+//         )}
+//       </div>
+//       <Handle type="source" position={Position.Right} />
+//     </div>
+//   );
+// };
 
 const nodeTypes = {
   custom: CustomNode,
@@ -337,6 +338,7 @@ const OSINTGraphInner = () => {
           children: node.children,
           onClick: () => onNodeClick(null, { id: node.id, data: node.data, parentNode: parentId }),
           id: node.id,
+          level: level,
         },
         parentNode: parentId,
         hidden: level > 2, //specify level here ex: level > 2
