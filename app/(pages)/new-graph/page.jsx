@@ -61,7 +61,7 @@ import { mockData } from "./mockGraphdata";
 
 const CustomNode = ({ data }) => {
   const Icon = data.icon || FaUser;
-  console.log(data);
+  // console.log(data);
   return (
     <div className="custom-node bg-secondary text-slate-950 rounded-sm p-1 px-2 text-xs">
       <Handle type="target" position={Position.Left} />
@@ -109,7 +109,7 @@ const initialEdges = [];
 
 const findChildTree = (treeData, selectedRoot) => {
   const rootId = selectedRoot.id;
-  console.log("selected root id", rootId);
+  // console.log("selected root id", rootId);
   const getChild = (node) => {
     if (node.id === rootId) {
       return node;
@@ -236,7 +236,6 @@ const OSINTGraphInner = () => {
         // console.log(currentNodes);
         const collapsedNodeIds = [];
         populateCollapsedNodeIds(currentNodes, collapsedNodeIds, nodeId);
-        console.log(collapsedNodeIds);
         const updatedNodes = currentNodes.map((node) => {
           if (node.id === nodeId) {
             return {
@@ -282,7 +281,6 @@ const OSINTGraphInner = () => {
           const targetNode = nodesRef.current.find((n) => n.id === edge.target);
           if (sourceNode && targetNode) {
             if (edge.source === nodeId) {
-              // console.log(sourceNode.data.isExpanded);
               return { ...edge, hidden: sourceNode.data.isExpanded };
             } else if (edge.target === nodeId) {
               return { ...edge, hidden: false };
@@ -304,7 +302,6 @@ const OSINTGraphInner = () => {
   );
 
   const onNodeClick = (event, node) => {
-    // console.log(node);
     if (node && node.id) {
       setSelectedRoot(node);
       // toggleChildrenVisibility(node.id);
@@ -317,7 +314,6 @@ const OSINTGraphInner = () => {
   );
 
   const layoutNodes = (nodes, parentX = 0, parentY = 0, level = 0, parentId = null) => {
-    // console.log("layout nodes", nodes);
     const nodeWidth = 110; // Updated nodeWidth value
     const nodeHeight = 20;
     const horizontalSpacing = 150;
@@ -428,7 +424,7 @@ const OSINTGraphInner = () => {
   }, [fetchData]);
 
   useEffect(() => {
-    console.log(selectedRoot);
+    // console.log(selectedRoot);
     if (selectedRoot) {
       fetchData();
     }
