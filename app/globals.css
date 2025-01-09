@@ -36,7 +36,11 @@ body {
   z-index: 99;
   width: 100%;
   color: white;
-  background-image: linear-gradient(to bottom right, rgba(84, 84, 84, 0.178), rgba(66, 66, 66, 0.196));
+  background-image: linear-gradient(
+    to bottom right,
+    rgba(84, 84, 84, 0.178),
+    rgba(66, 66, 66, 0.196)
+  );
   backdrop-filter: blur(5px);
   padding: 15px 40px;
   display: flex;
@@ -548,7 +552,11 @@ body {
 }
 .failed-toast {
   border: none;
-  background-image: linear-gradient(to bottom right, rgb(235, 56, 98), rgb(235, 96, 128)) !important;
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(235, 56, 98),
+    rgb(235, 96, 128)
+  ) !important;
   color: white !important;
 }
 .options-menu {
@@ -570,7 +578,11 @@ body {
 }
 .dashboard-card {
   background-color: transparent;
-  background-image: linear-gradient(to right, rgba(128, 128, 128, 0.062), rgba(128, 128, 128, 0.078));
+  background-image: linear-gradient(
+    to right,
+    rgba(128, 128, 128, 0.062),
+    rgba(128, 128, 128, 0.078)
+  );
   color: white;
   border: 1px solid rgba(150, 150, 150, 0.098);
 }
@@ -657,7 +669,7 @@ body {
 }
 @layer base {
   * {
-    @apply border-border;
+    /* @apply border-border; */
   }
   body {
     @apply bg-background text-foreground;

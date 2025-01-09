@@ -61,12 +61,31 @@ import { mockData } from "./mockGraphdata";
 
 const CustomNode = ({ data }) => {
   const Icon = data.icon || FaUser;
+  console.log(data);
   return (
-    <div className="custom-node bg-secondary text-slate-950 rounded-sm p-2 text-sm">
+    <div className="custom-node bg-secondary text-slate-950 rounded-sm p-1 px-2 text-xs">
       <Handle type="target" position={Position.Left} />
       <div onClick={data.onClick} className="flex gap-2 justify-center items-center">
         <Icon className="node-icon" />
         <span className="node-label">{data.label}</span>
+        {data.children && data.children.length > 0 && (
+          <span
+            className="node-childcount"
+            style={{
+              backgroundColor: "#0bf499",
+              color: "black",
+              borderRadius: "10px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              width: "20px",
+              height: "20px",
+              fontSize: "8px",
+            }}
+          >
+            {data.children.length}
+          </span>
+        )}
       </div>
       <Handle type="source" position={Position.Right} />
     </div>
@@ -319,6 +338,7 @@ const OSINTGraphInner = () => {
         data: {
           ...node.data,
           isExpanded: false,
+          children: node.children,
           onClick: () => onNodeClick(null, { id: node.id, data: node.data, parentNode: parentId }),
           id: node.id,
         },
@@ -393,15 +413,14 @@ const OSINTGraphInner = () => {
     } else {
       filteredTree = treeData;
     }
-    console.log("filtered Tree", filteredTree);
+    // console.log("filtered Tree", filteredTree);
     const [newNodes, newEdges] = layoutNodes([filteredTree]);
-    // console.log(newNodes);
     setNodes(newNodes);
     setEdges(newEdges);
   }, [setNodes, setEdges, selectedRoot]);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    const timer = setInterval(() => {
       fetchData();
     }, 2000);
 
@@ -464,6 +483,10 @@ const OSINTGraphInner = () => {
         }
         .node-label {
           cursor: pointer;
+        }
+        .node-childcount {
+          color: white;
+          background-color: red !important;
         }
       `}</style>
     </div>
