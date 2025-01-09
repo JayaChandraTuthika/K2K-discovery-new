@@ -16,47 +16,48 @@ import ReactFlow, {
 } from "reactflow";
 import "reactflow/dist/style.css";
 import { FaUser, FaBuilding, FaGlobe, FaEnvelope, FaPhone } from "react-icons/fa";
+import { mockData } from "./mockGraphdata";
 
-const mockData = {
-  id: "root",
-  data: { label: "John Doe", icon: FaUser },
-  children: [
-    {
-      id: "1",
-      data: { label: "Acme Corp", icon: FaBuilding },
-      children: [
-        {
-          id: "1-1",
-          data: { label: "acme.com", icon: FaGlobe },
-          children: [
-            {
-              id: "1-1-1",
-              data: { label: "test@acme.com", icon: FaEnvelope },
-              children: [{ id: "1-1-1-1", data: { label: "test2@acme.com", icon: FaEnvelope } }],
-            },
-          ],
-        },
-        { id: "1-2", data: { label: "info@acme.com", icon: FaEnvelope } },
-      ],
-    },
-    {
-      id: "2",
-      data: { label: "Personal", icon: FaUser },
-      children: [
-        { id: "2-1", data: { label: "john@email.com", icon: FaEnvelope } },
-        { id: "2-2", data: { label: "+1 123-456-7890", icon: FaPhone } },
-      ],
-    },
-    {
-      id: "3",
-      data: { label: "Social", icon: FaUser },
-      children: [
-        { id: "3-1", data: { label: "Twitter", icon: FaGlobe } },
-        { id: "3-2", data: { label: "LinkedIn", icon: FaGlobe } },
-      ],
-    },
-  ],
-};
+// const mockData = {
+//   id: "root",
+//   data: { label: "John Doe", icon: FaUser },
+//   children: [
+//     {
+//       id: "1",
+//       data: { label: "Acme Corp", icon: FaBuilding },
+//       children: [
+//         {
+//           id: "1-1",
+//           data: { label: "acme.com", icon: FaGlobe },
+//           children: [
+//             {
+//               id: "1-1-1",
+//               data: { label: "test@acme.com", icon: FaEnvelope },
+//               children: [{ id: "1-1-1-1", data: { label: "test2@acme.com", icon: FaEnvelope } }],
+//             },
+//           ],
+//         },
+//         { id: "1-2", data: { label: "info@acme.com", icon: FaEnvelope } },
+//       ],
+//     },
+//     {
+//       id: "2",
+//       data: { label: "Personal", icon: FaUser },
+//       children: [
+//         { id: "2-1", data: { label: "john@email.com", icon: FaEnvelope } },
+//         { id: "2-2", data: { label: "+1 123-456-7890", icon: FaPhone } },
+//       ],
+//     },
+//     {
+//       id: "3",
+//       data: { label: "Social", icon: FaUser },
+//       children: [
+//         { id: "3-1", data: { label: "Twitter", icon: FaGlobe } },
+//         { id: "3-2", data: { label: "LinkedIn", icon: FaGlobe } },
+//       ],
+//     },
+//   ],
+// };
 
 const CustomNode = ({ data }) => {
   const Icon = data.icon || FaUser;
@@ -96,7 +97,6 @@ const findChildTree = (treeData, selectedRoot) => {
     } else {
       if (node.children) {
         let childFound;
-
         node.children.forEach((ch) => {
           if (!childFound) childFound = getChild(ch);
         });
@@ -352,40 +352,40 @@ const OSINTGraphInner = () => {
   };
 
   const fetchData = useCallback(async () => {
-    const mockData = {
-      id: "root",
-      data: { label: "John Doe", icon: FaUser },
-      children: [
-        {
-          id: "1",
-          data: { label: "Acme Corp", icon: FaBuilding },
-          children: [
-            {
-              id: "1-1",
-              data: { label: "acme.com", icon: FaGlobe },
-              children: [{ id: "1-1-1", data: { label: "test@acme.com", icon: FaEnvelope } }],
-            },
-            { id: "1-2", data: { label: "info@acme.com", icon: FaEnvelope } },
-          ],
-        },
-        {
-          id: "2",
-          data: { label: "Personal", icon: FaUser },
-          children: [
-            { id: "2-1", data: { label: "john@email.com", icon: FaEnvelope } },
-            { id: "2-2", data: { label: "+1 123-456-7890", icon: FaPhone } },
-          ],
-        },
-        {
-          id: "3",
-          data: { label: "Social", icon: FaUser },
-          children: [
-            { id: "3-1", data: { label: "Twitter", icon: FaGlobe } },
-            { id: "3-2", data: { label: "LinkedIn", icon: FaGlobe } },
-          ],
-        },
-      ],
-    };
+    // const mockData = {
+    //   id: "root",
+    //   data: { label: "John Doe", icon: FaUser },
+    //   children: [
+    //     {
+    //       id: "1",
+    //       data: { label: "Acme Corp", icon: FaBuilding },
+    //       children: [
+    //         {
+    //           id: "1-1",
+    //           data: { label: "acme.com", icon: FaGlobe },
+    //           children: [{ id: "1-1-1", data: { label: "test@acme.com", icon: FaEnvelope } }],
+    //         },
+    //         { id: "1-2", data: { label: "info@acme.com", icon: FaEnvelope } },
+    //       ],
+    //     },
+    //     {
+    //       id: "2",
+    //       data: { label: "Personal", icon: FaUser },
+    //       children: [
+    //         { id: "2-1", data: { label: "john@email.com", icon: FaEnvelope } },
+    //         { id: "2-2", data: { label: "+1 123-456-7890", icon: FaPhone } },
+    //       ],
+    //     },
+    //     {
+    //       id: "3",
+    //       data: { label: "Social", icon: FaUser },
+    //       children: [
+    //         { id: "3-1", data: { label: "Twitter", icon: FaGlobe } },
+    //         { id: "3-2", data: { label: "LinkedIn", icon: FaGlobe } },
+    //       ],
+    //     },
+    //   ],
+    // };
     // console.log("tree", treeData);
     let filteredTree;
     if (selectedRoot) {
