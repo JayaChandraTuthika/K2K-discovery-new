@@ -13,127 +13,135 @@ import {
 } from "react-icons/fa";
 
 export const mockData = {
-  id: "root",
-  data: { label: "SC LOWY", icon: FaBuilding },
+  id: "67a8c862-7b60-4527-acc1-405bdf7d883f",
+  data: { label: "initial_data", type: "root" },
   children: [
     {
-      id: "organization",
-      data: { label: "Organization Details", icon: FaBuilding },
-      children: [
-        { id: "org-1", data: { label: "sclowy.com", icon: FaGlobe } },
-        { id: "org-2", data: { label: "Investment Management", icon: FaBriefcase } },
-        { id: "org-3", data: { label: "59 Employees", icon: FaUsers } },
-        { id: "org-4", data: { label: "+852 3405 1300", icon: FaPhone } },
-        { id: "org-5", data: { label: "Hong Kong", icon: FaMapMarkerAlt } },
-        {
-          id: "org-6",
-          data: { label: "http://www.linkedin.com/company/sclowy", icon: FaGlobe },
-        },
-      ],
-    },
-    {
-      id: "people",
-      data: { label: "People Details", icon: FaUsers },
+      id: "8880f080-3ef0-431f-a158-86b07a78719b",
+      data: { label: "sclowy.com", type: "domain" },
       children: [
         {
-          id: "person-1",
-          data: { label: "Simon Clairet", icon: FaUser },
+          id: "31ec1e8c-be6e-407a-b9e2-b13cf03958b3",
+          data: { label: "contact info", type: "contact info" },
           children: [
             {
-              id: "person-1-title",
-              data: { label: "Head of Markets and Fundraising, Asia", icon: FaBriefcase },
+              id: "8aca771d-e69c-4d31-960a-7872e0a68a70",
+              data: { label: "+852 3405 1300", type: "phone" },
+              children: [],
             },
             {
-              id: "person-1-email",
-              data: { label: "email_not_unlocked@domain.com", icon: FaEnvelope },
-            },
-            { id: "person-1-location", data: { label: "Hong Kong", icon: FaMapMarkerAlt } },
-            {
-              id: "person-1-linkedin",
-              data: { label: "http://www.linkedin.com/in/simon-clairet-291456", icon: FaGlobe },
+              id: "98e68918-aa1d-4c4b-b1fa-371bc0fa6736",
+              data: { label: "+85234051300", type: "sanitized_phone" },
+              children: [],
             },
             {
-              id: "person-1-breach",
-              data: { label: "Data Breaches", icon: FaExclamationTriangle },
-              children: [
-                { id: "breach-1", data: { label: "No breaches found", icon: FaShieldAlt } },
-              ],
+              id: "b5054ad3-5a36-4e0f-813d-99cb9397407d",
+              data: { label: "http://www.linkedin.com/company/sclowy", type: "linkedin_url" },
+              children: [],
+            },
+            {
+              id: "b1fe0343-965e-4c1d-bb01-1fae97013a34",
+              data: { label: "https://twitter.com/sclowynews", type: "twitter_url" },
+              children: [],
+            },
+            {
+              id: "7fa00e90-0c3c-4c73-b1cb-f8b379143b29",
+              data: { label: "8 Queen's Rd, Hong Kong, Hong Kong", type: "address" },
+              children: [],
             },
           ],
         },
         {
-          id: "person-2",
-          data: { label: "Jan Zarzycki", icon: FaUser },
+          id: "0a07dfe1-115e-4d5c-8d5e-95ac92825279",
+          data: { label: "financial data", type: "financial data" },
           children: [
             {
-              id: "person-2-title",
+              id: "432765db-0d9b-45cd-ae56-ee5b1640df43",
+              data: { label: 2009, type: "founded_year" },
+              children: [],
+            },
+            {
+              id: "b27e6c61-70e9-43d8-8320-d2d99e8bfa29",
+              data: { label: 450000000, type: "total_funding" },
+              children: [],
+            },
+            {
+              id: "d18d7a5e-5ca0-4cf2-8a51-9a0fec68ab17",
+              data: { label: "450M", type: "total_funding_printed" },
+              children: [],
+            },
+            {
+              id: "434fc680-824d-4b16-9d32-c2ed909b163b",
+              data: { label: "Other", type: "latest_funding_stage" },
+              children: [],
+            },
+            {
+              id: "3d819ef4-520c-4c4b-9b49-e7225f2f5faa",
+              data: { label: "2022-09-01T00:00:00.000+00:00", type: "latest_funding_round_date" },
+              children: [],
+            },
+          ],
+        },
+        {
+          id: "af101668-c85b-415e-a5df-ea0ebc9bb6e7",
+          data: { label: "technological data", type: "technological data" },
+          children: [
+            {
+              id: "a4d4592a-8c2e-4e5a-b19f-4536e49b648f",
               data: {
-                label: "Business Development - HY, Distressed Debt, Leveraged Credit Sales",
-                icon: FaBriefcase,
+                label:
+                  "['Adobe Media Optimizer', 'Apache', 'Cedexis Radar', 'DigitalOcean', 'Google Font API', 'Google Maps', 'Google Maps (Non Paid Users)', 'Google Tag Manager', 'Gravity Forms', 'Mobile Friendly', 'Nginx', 'Outlook', 'Vimeo', 'WordPress.org', 'reCAPTCHA']",
+                type: "technologies",
               },
-            },
-            { id: "person-2-email", data: { label: "jan.zarzycki@sclowy.com", icon: FaEnvelope } },
-            { id: "person-2-location", data: { label: "United Kingdom", icon: FaMapMarkerAlt } },
-            {
-              id: "person-2-linkedin",
-              data: { label: "http://www.linkedin.com/in/janzarzycki", icon: FaGlobe },
+              children: [],
             },
             {
-              id: "person-2-breach",
-              data: { label: "Data Breaches", icon: FaExclamationTriangle },
-              children: [
-                { id: "breach-1", data: { label: "Adobe (2013-10-04)", icon: FaCalendar } },
-                { id: "breach-2", data: { label: "LinkedIn (2012-05-05)", icon: FaCalendar } },
-                { id: "breach-3", data: { label: "Collection1 (2019-01-07)", icon: FaCalendar } },
-                {
-                  id: "breach-4",
-                  data: { label: "VerificationsIO (2019-02-25)", icon: FaCalendar },
-                },
-                { id: "breach-5", data: { label: "DemandScience (2024-02-28)", icon: FaCalendar } },
-              ],
+              id: "9604b58b-c6df-4e94-ac12-52607d653b76",
+              data: {
+                label:
+                  "[{'uid': 'adobe_media_optimizer', 'name': 'Adobe Media Optimizer', 'category': 'Search Marketing'}, {'uid': 'apache', 'name': 'Apache', 'category': 'Load Balancers'}, {'uid': 'cedexis_radar', 'name': 'Cedexis Radar', 'category': 'Web Performance Monitoring'}, {'uid': 'digitalocean', 'name': 'DigitalOcean', 'category': 'Hosting'}, {'uid': 'google_font_api', 'name': 'Google Font API', 'category': 'Fonts'}, {'uid': 'google_maps', 'name': 'Google Maps', 'category': 'Other'}, {'uid': 'google_maps_non_paid_users', 'name': 'Google Maps (Non Paid Users)', 'category': 'Other'}, {'uid': 'google_tag_manager', 'name': 'Google Tag Manager', 'category': 'Tag Management'}, {'uid': 'gravity_forms', 'name': 'Gravity Forms', 'category': 'Hosted Forms'}, {'uid': 'mobile_friendly', 'name': 'Mobile Friendly', 'category': 'Other'}, {'uid': 'nginx', 'name': 'Nginx', 'category': 'Load Balancers'}, {'uid': 'outlook', 'name': 'Outlook', 'category': 'Email Providers'}, {'uid': 'vimeo', 'name': 'Vimeo', 'category': 'Online Video Platforms'}, {'uid': 'wordpress_org', 'name': 'WordPress.org', 'category': 'CMS'}, {'uid': 'recaptcha', 'name': 'reCAPTCHA', 'category': 'Captcha'}]",
+                type: "current_technologies",
+              },
+              children: [],
             },
           ],
         },
         {
-          id: "person-3",
-          data: { label: "Lionel", icon: FaUser },
+          id: "be38cca3-a2e2-4f69-880b-fe76f2cdcd66",
+          data: { label: "description data", type: "description data" },
           children: [
-            { id: "person-3-title", data: { label: "Chief Strategy Officer", icon: FaBriefcase } },
             {
-              id: "person-3-email",
-              data: { label: "lionel.de.somer@sclowy.com", icon: FaEnvelope },
-            },
-            { id: "person-3-location", data: { label: "Belgium", icon: FaMapMarkerAlt } },
-            {
-              id: "person-3-linkedin",
-              data: { label: "http://www.linkedin.com/in/lioneldesomer", icon: FaGlobe },
-            },
-            {
-              id: "person-3-breach",
-              data: { label: "Data Breaches", icon: FaExclamationTriangle },
-              children: [
-                { id: "breach-1", data: { label: "No breaches found", icon: FaShieldAlt } },
-              ],
-            },
-          ],
-        },
-        {
-          id: "person-4",
-          data: { label: "Johan Sudiman", icon: FaUser },
-          children: [
-            { id: "person-4-title", data: { label: "Loan Trader", icon: FaBriefcase } },
-            { id: "person-4-email", data: { label: "johan.sudiman@sclowy.com", icon: FaEnvelope } },
-            { id: "person-4-location", data: { label: "Hong Kong", icon: FaMapMarkerAlt } },
-            {
-              id: "person-4-linkedin",
-              data: { label: "http://www.linkedin.com/in/johan-sudiman-b02a6511", icon: FaGlobe },
+              id: "3f5b5e12-5d03-4882-918b-01d0603cc6c8",
+              data: {
+                label:
+                  "SC Lowy is a leading alternative asset manager with $1.6 billion in assets under management, specializing in opportunistic credit, special situations, and private credit across Asia Pacific, the Middle East, and Europe. Founded in 2009, the firm operates out of nine global offices with a team of over 50 experienced professionals.\n\nAt SC Lowy, we leverage our deep market expertise and local presence to overcome barriers to entry in fragmented markets. Our dedicated local teams cultivate long-standing relationships, granting us prime access to untapped investment opportunities. We focus on solid, cash-generating businesses and prioritize capital preservation, with a strong emphasis on downside protection through senior secured lending backed by hard assets.\n\nWith a proven track record in both private credit closed-end and open-ended funds, SC Lowy is committed to delivering innovative financial solutions that maximize value for our investors. Our approach combines rigorous credit analysis with a focus on mitigating risk, ensuring robust returns while safeguarding capital.",
+                type: "short_description",
+              },
+              children: [],
             },
             {
-              id: "person-4-breach",
-              data: { label: "Data Breaches", icon: FaExclamationTriangle },
-              children: [
-                { id: "breach-1", data: { label: "No breaches found", icon: FaShieldAlt } },
-              ],
+              id: "d4d30457-2237-49a3-8916-413d7e56409b",
+              data: { label: "", type: "seo_description" },
+              children: [],
+            },
+            {
+              id: "ef8acaf4-4cdb-4d13-9a6b-c982b69d1c27",
+              data: {
+                label:
+                  "['asset management', 'private credit', 'distressed', 'high yield', 'special situations']",
+                type: "keywords",
+              },
+              children: [],
+            },
+            {
+              id: "7e08712d-4604-443f-b7ac-11d1af943ba2",
+              data: { label: "investment management", type: "industry" },
+              children: [],
+            },
+            {
+              id: "4baa520e-1b01-41df-9384-ee893cddc294",
+              data: { label: "59", type: "estimated_num_employees" },
+              children: [],
             },
           ],
         },
