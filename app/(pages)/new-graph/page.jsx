@@ -300,16 +300,16 @@ const OSINTGraphInner = () => {
   const layoutNodes = (nodes, parentX = 0, parentY = 0, level = 0, parentId = null) => {
     // console.log("layout nodes", nodes);
     const nodeWidth = 110; // Updated nodeWidth value
-    const nodeHeight = 30;
-    const horizontalSpacing = 60;
-    const verticalSpacing = 30;
+    const nodeHeight = 20;
+    const horizontalSpacing = 150;
+    const verticalSpacing = 20;
     let newNodes = [];
     let newEdges = [];
 
     nodes.forEach((node, index, array) => {
       const x = level * horizontalSpacing + nodeWidth;
       const middleIndex = Math.floor(array.length / 2);
-      const yOffset = (index - middleIndex) * (nodeHeight + verticalSpacing);
+      const yOffset = (index - middleIndex) * (nodeHeight + verticalSpacing) * (5 - level * 2);
       const y = parentY + yOffset;
 
       const newNode = {
@@ -323,7 +323,7 @@ const OSINTGraphInner = () => {
           id: node.id,
         },
         parentNode: parentId,
-        hidden: level > 3,
+        hidden: level > 2, //specify level here ex: level > 2
       };
 
       newNodes.push(newNode);
@@ -337,7 +337,7 @@ const OSINTGraphInner = () => {
           animated: true,
           style: { stroke: "#888" },
           markerEnd: { type: MarkerType.ArrowClosed, color: "#888" },
-          hidden: level > 3,
+          hidden: level > 2, //specify level here ex: level > 2
         });
       }
 
@@ -394,7 +394,7 @@ const OSINTGraphInner = () => {
       filteredTree = treeData;
     }
     console.log("filtered Tree", filteredTree);
-    const [newNodes, newEdges] = layoutNodes([treeData]);
+    const [newNodes, newEdges] = layoutNodes([filteredTree]);
     // console.log(newNodes);
     setNodes(newNodes);
     setEdges(newEdges);
@@ -403,7 +403,7 @@ const OSINTGraphInner = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       fetchData();
-    }, 5000);
+    }, 2000);
 
     return () => clearTimeout(timer);
   }, [fetchData]);
