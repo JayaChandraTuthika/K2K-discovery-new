@@ -17,6 +17,47 @@ import ReactFlow, {
 import "reactflow/dist/style.css";
 import { FaUser, FaBuilding, FaGlobe, FaEnvelope, FaPhone } from "react-icons/fa";
 
+const mockData = {
+  id: "root",
+  data: { label: "John Doe", icon: FaUser },
+  children: [
+    {
+      id: "1",
+      data: { label: "Acme Corp", icon: FaBuilding },
+      children: [
+        {
+          id: "1-1",
+          data: { label: "acme.com", icon: FaGlobe },
+          children: [
+            {
+              id: "1-1-1",
+              data: { label: "test@acme.com", icon: FaEnvelope },
+              children: [{ id: "1-1-1-1", data: { label: "test2@acme.com", icon: FaEnvelope } }],
+            },
+          ],
+        },
+        { id: "1-2", data: { label: "info@acme.com", icon: FaEnvelope } },
+      ],
+    },
+    {
+      id: "2",
+      data: { label: "Personal", icon: FaUser },
+      children: [
+        { id: "2-1", data: { label: "john@email.com", icon: FaEnvelope } },
+        { id: "2-2", data: { label: "+1 123-456-7890", icon: FaPhone } },
+      ],
+    },
+    {
+      id: "3",
+      data: { label: "Social", icon: FaUser },
+      children: [
+        { id: "3-1", data: { label: "Twitter", icon: FaGlobe } },
+        { id: "3-2", data: { label: "LinkedIn", icon: FaGlobe } },
+      ],
+    },
+  ],
+};
+
 const CustomNode = ({ data }) => {
   const Icon = data.icon || FaUser;
   return (
@@ -46,9 +87,31 @@ const initialNodes = [
 
 const initialEdges = [];
 
+const findChildTree = (treeData, selectedRoot) => {
+  const rootId = selectedRoot.id;
+  console.log("selected root id", rootId);
+  const getChild = (node) => {
+    if (node.id === rootId) {
+      return node;
+    } else {
+      if (node.children) {
+        let childFound;
+
+        node.children.forEach((ch) => {
+          if (!childFound) childFound = getChild(ch);
+        });
+        if (childFound) return childFound;
+      }
+    }
+  };
+  return getChild(treeData);
+};
+
 const OSINTGraphInner = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
+  const [treeData, setTreeData] = useState(mockData);
+  const [selectedRoot, setSelectedRoot] = useState(null);
   const nodesRef = useRef(nodes);
   const isProcessingRef = useRef(false);
 
@@ -135,13 +198,26 @@ const OSINTGraphInner = () => {
       includeHiddenNodes: false,
     });
   };
+
+  const populateCollapsedNodeIds = (currentNodes, nodeIds, clickedNodeId) => {
+    currentNodes.forEach((n) => {
+      if (n.parentNode === clickedNodeId && !nodeIds.includes(n.id)) {
+        nodeIds.push(n.id);
+        // Recursively add children of the current node
+        populateCollapsedNodeIds(currentNodes, nodeIds, n.id);
+      }
+    });
+  };
   const toggleChildrenVisibility = useCallback(
     (nodeId) => {
       if (isProcessingRef.current) return;
       isProcessingRef.current = true;
 
       setNodes((currentNodes) => {
-        // console.log("updated nodes");
+        // console.log(currentNodes);
+        const collapsedNodeIds = [];
+        populateCollapsedNodeIds(currentNodes, collapsedNodeIds, nodeId);
+        console.log(collapsedNodeIds);
         const updatedNodes = currentNodes.map((node) => {
           if (node.id === nodeId) {
             return {
@@ -149,7 +225,8 @@ const OSINTGraphInner = () => {
               data: { ...node.data, isExpanded: !node.data.isExpanded },
             };
           }
-          if (node.parentNode === nodeId) {
+
+          if (collapsedNodeIds.includes(node.id)) {
             return { ...node, hidden: !node.hidden };
           }
           return node;
@@ -181,15 +258,12 @@ const OSINTGraphInner = () => {
       });
 
       setEdges((currentEdges) => {
-        console.log("Nodes ref", nodesRef.current);
         return currentEdges.map((edge) => {
           const sourceNode = nodesRef.current.find((n) => n.id === edge.source);
           const targetNode = nodesRef.current.find((n) => n.id === edge.target);
-          // console.log("source", sourceNode);
-          // console.log("target", targetNode);
           if (sourceNode && targetNode) {
             if (edge.source === nodeId) {
-              console.log(sourceNode.data.isExpanded);
+              // console.log(sourceNode.data.isExpanded);
               return { ...edge, hidden: sourceNode.data.isExpanded };
             } else if (edge.target === nodeId) {
               return { ...edge, hidden: false };
@@ -211,15 +285,20 @@ const OSINTGraphInner = () => {
   );
 
   const onNodeClick = (event, node) => {
-    console.log("Clicked");
+    // console.log(node);
     if (node && node.id) {
-      toggleChildrenVisibility(node.id);
+      setSelectedRoot(node);
+      // toggleChildrenVisibility(node.id);
     }
   };
 
-  const onConnect = useCallback((params) => setEdges((eds) => addEdge({ ...params, type: "bezier" }, eds)), [setEdges]);
+  const onConnect = useCallback(
+    (params) => setEdges((eds) => addEdge({ ...params, type: "default" }, eds)),
+    [setEdges]
+  );
 
   const layoutNodes = (nodes, parentX = 0, parentY = 0, level = 0, parentId = null) => {
+    // console.log("layout nodes", nodes);
     const nodeWidth = 110; // Updated nodeWidth value
     const nodeHeight = 30;
     const horizontalSpacing = 60;
@@ -240,11 +319,11 @@ const OSINTGraphInner = () => {
         data: {
           ...node.data,
           isExpanded: false,
-          onClick: () => onNodeClick(null, { id: node.id, data: node.data }),
+          onClick: () => onNodeClick(null, { id: node.id, data: node.data, parentNode: parentId }),
           id: node.id,
         },
         parentNode: parentId,
-        hidden: level > 1,
+        hidden: level > 3,
       };
 
       newNodes.push(newNode);
@@ -254,11 +333,11 @@ const OSINTGraphInner = () => {
           id: `${parentId}-${node.id}`,
           source: parentId,
           target: node.id,
-          type: "bezier",
+          type: "default",
           animated: true,
           style: { stroke: "#888" },
           markerEnd: { type: MarkerType.ArrowClosed, color: "#888" },
-          hidden: level > 1,
+          hidden: level > 3,
         });
       }
 
@@ -281,7 +360,11 @@ const OSINTGraphInner = () => {
           id: "1",
           data: { label: "Acme Corp", icon: FaBuilding },
           children: [
-            { id: "1-1", data: { label: "acme.com", icon: FaGlobe } },
+            {
+              id: "1-1",
+              data: { label: "acme.com", icon: FaGlobe },
+              children: [{ id: "1-1-1", data: { label: "test@acme.com", icon: FaEnvelope } }],
+            },
             { id: "1-2", data: { label: "info@acme.com", icon: FaEnvelope } },
           ],
         },
@@ -303,18 +386,34 @@ const OSINTGraphInner = () => {
         },
       ],
     };
-
-    const [newNodes, newEdges] = layoutNodes([mockData]);
+    // console.log("tree", treeData);
+    let filteredTree;
+    if (selectedRoot) {
+      filteredTree = findChildTree(treeData, selectedRoot);
+    } else {
+      filteredTree = treeData;
+    }
+    console.log("filtered Tree", filteredTree);
+    const [newNodes, newEdges] = layoutNodes([treeData]);
+    // console.log(newNodes);
     setNodes(newNodes);
     setEdges(newEdges);
-  }, [setNodes, setEdges]);
+  }, [setNodes, setEdges, selectedRoot]);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       fetchData();
-    }, 1000);
+    }, 5000);
 
     return () => clearTimeout(timer);
   }, [fetchData]);
+
+  useEffect(() => {
+    console.log(selectedRoot);
+    if (selectedRoot) {
+      fetchData();
+    }
+  }, [selectedRoot]);
 
   const fitViewOptions = {
     duration: 1000,
@@ -343,7 +442,7 @@ const OSINTGraphInner = () => {
         nodeTypes={nodeTypes}
         fitView
         fitViewOptions={fitViewOptions}
-        defaultEdgeOptions={{ type: "bezier" }}
+        defaultEdgeOptions={{ type: "default" }}
       >
         <Controls />
         {/* <MiniMap /> */}
