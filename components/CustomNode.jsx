@@ -43,6 +43,29 @@ const CustomNode = ({ data }) => {
       break;
   }
 
+  let description = null;
+  console.log(data.value);
+  let val = data.value;
+  // console.log(typeof val);
+  if (typeof val === "string") {
+    description = <p key={val}>{val}</p>;
+  } else {
+    val = JSON.parse(val);
+    let keys = Object.keys(val);
+    let values = Object.values(val);
+    description = (
+      <>
+        {keys.map((key, ix) => {
+          return (
+            <p key={ix}>
+              {key}: {values[ix]}
+            </p>
+          );
+        })}
+      </>
+    );
+  }
+
   return (
     <div className="custom-node" style={{ borderColor: bgColor, color: "white" }}>
       <Handle type="target" style={{ backgroundColor: bgColor }} position={Position.Left} />
@@ -58,11 +81,7 @@ const CustomNode = ({ data }) => {
         )}
       </div>
       <Handle type="source" position={Position.Right} style={{ backgroundColor: bgColor }} />
-      <div className="node-description">
-        {data.value.map((val) => (
-          <p key={val}>{val}</p>
-        ))}
-      </div>
+      <div className="node-description">{description}</div>
     </div>
   );
 };
