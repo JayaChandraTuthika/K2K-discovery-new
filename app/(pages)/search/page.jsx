@@ -87,12 +87,7 @@ const Search = () => {
         const data = await response.json();
         console.log("data", data);
         router.push(
-          "/investigate?graphId=" +
-            graphId +
-            "&&search=" +
-            searchQuery +
-            "&&identifier=" +
-            identifier
+          "/new-graph?graphId=" + graphId + "&&search=" + searchQuery + "&&identifier=" + identifier
         );
       } catch (error) {
         console.log("error", error);

@@ -60,7 +60,7 @@ const CustomNode = ({ data }) => {
       <Handle type="source" position={Position.Right} style={{ backgroundColor: bgColor }} />
       <div className="node-description">
         {data.value.map((val) => (
-          <p>{val}</p>
+          <p key={val}>{val}</p>
         ))}
       </div>
     </div>

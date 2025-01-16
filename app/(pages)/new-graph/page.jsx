@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useCallback, useRef } from "react";
+import React, { useState, useEffect, useCallback, useRef, Suspense } from "react";
 import ReactFlow, {
   MiniMap,
   Controls,
@@ -120,17 +120,16 @@ const findParentTree = (treeData, selectedRootId) => {
 const OSINTGraphInner = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
-  const [treeData, setTreeData] = useState(mockData);
+  const [treeData, setTreeData] = useState(null);
   const [selectedRoot, setSelectedRoot] = useState(null);
   const nodesRef = useRef(nodes);
   const isProcessingRef = useRef(false);
   const [graphStatus, setGraphStatus] = useState("processing");
-  // const params = useSearchParams();
-  const graphId = "test";
-  // const graphId = params.get("graphId");
+  const params = useSearchParams();
+  const graphId = params.get("graphId");
 
-  // const search = params.get("search");
-  // const identifier = params.get("identifier");
+  const search = params.get("search");
+  const identifier = params.get("identifier");
 
   const { fitView } = useReactFlow();
 
@@ -398,24 +397,8 @@ const OSINTGraphInner = () => {
     return [newNodes, newEdges];
   };
 
-  const fetchData = useCallback(async () => {
-    if (graphId) {
-      const options = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          graphId: graphId,
-          // action: action,
-          // entityId: entityId,
-        }),
-      };
-      // const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "fetchGraph", options);
-
-      // const newData = await response.json();
-      // console.log("from fetch", newData);
-    }
+  const selectChildTree = useCallback(async () => {
+    console.log("child selected");
 
     let filteredTree;
     if (selectedRoot) {
@@ -423,24 +406,54 @@ const OSINTGraphInner = () => {
     } else {
       filteredTree = treeData;
     }
-    console.log("filtered Tree", filteredTree);
+    // console.log("filtered Tree", filteredTree);
     const [newNodes, newEdges] = layoutNodes([filteredTree]);
     setNodes(newNodes);
     setEdges(newEdges);
   }, [setNodes, setEdges, selectedRoot]);
 
+  const fetchGraphData = useCallback(async () => {
+    console.log("fetching");
+    // if (graphId) {
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        graphId: graphId,
+        action: "test",
+        entityId: "test",
+      }),
+    };
+    const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "fetchGraph", options);
+
+    const newData = await response.json();
+    // console.log(newData.graph);
+    // const newData = mockData;
+    setTreeData(newData.graph);
+    setSelectedRoot(newData.graph.id);
+    // console.log("from fetch", newData);
+    // }
+  }, [graphId]);
+
   useEffect(() => {
     const timer = setTimeout(() => {
-      fetchData();
-    }, 2000);
+      if (!treeData) {
+        fetchGraphData();
+      }
+    }, 5000);
 
     return () => clearTimeout(timer);
-  }, [fetchData]);
+  }, [selectChildTree, treeData]);
+
+  // useEffect(() => {
+
+  // },[])
 
   useEffect(() => {
-    // console.log(selectedRoot);
     if (selectedRoot) {
-      fetchData();
+      selectChildTree();
     }
     setTimeout(() => {
       fitView(fitViewOptions);
@@ -508,9 +521,11 @@ const OSINTGraphInner = () => {
 };
 
 const OSINTGraph = () => (
-  <ReactFlowProvider>
-    <OSINTGraphInner />
-  </ReactFlowProvider>
+  <Suspense>
+    <ReactFlowProvider>
+      <OSINTGraphInner />
+    </ReactFlowProvider>
+  </Suspense>
 );
 
 export default OSINTGraph;
