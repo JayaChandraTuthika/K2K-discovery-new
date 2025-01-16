@@ -128,6 +128,7 @@ const OSINTGraphInner = () => {
   // const params = useSearchParams();
   const graphId = "test";
   // const graphId = params.get("graphId");
+
   // const search = params.get("search");
   // const identifier = params.get("identifier");
 
