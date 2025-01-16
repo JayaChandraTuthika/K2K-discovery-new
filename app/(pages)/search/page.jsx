@@ -106,12 +106,7 @@ const Search = () => {
     // const graphId = uuidv4();
 
     // router.push(
-    //   "/investigate?graphId=" +
-    //     graphId +
-    //     "&&search=" +
-    //     searchQuery +
-    //     "&&identifier=" +
-    //     identifier
+    //   "/new-graph?graphId=" + graphId + "&&search=" + searchQuery + "&&identifier=" + identifier
     // );
 
     // router.push("/investigate");
@@ -122,11 +117,7 @@ const Search = () => {
       <Header loggedIn={true} />
       <div className="header-text">
         <h2>OSINT Search</h2>
-        <button
-          disabled
-          title="this feature is coming soon"
-          style={{ cursor: "not-allowed" }}
-        >
+        <button disabled title="this feature is coming soon" style={{ cursor: "not-allowed" }}>
           Reports
         </button>
       </div>
@@ -141,13 +132,9 @@ const Search = () => {
             </SelectTrigger>
             <SelectContent className="options-menu">
               <SelectItem value="Brand Monitoring">Brand Monitoring</SelectItem>
-              <SelectItem value="Dark Web Mentions">
-                Dark Web Mentions
-              </SelectItem>
+              <SelectItem value="Dark Web Mentions">Dark Web Mentions</SelectItem>
               <SelectItem value="Risk Assessment">Risk Assessment</SelectItem>
-              <SelectItem value="Threat Intelligence">
-                Threat Intelligence
-              </SelectItem>
+              <SelectItem value="Threat Intelligence">Threat Intelligence</SelectItem>
               <SelectItem value="Market Analysis">Market Analysis</SelectItem>
             </SelectContent>
           </Select>

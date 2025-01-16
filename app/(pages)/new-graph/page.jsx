@@ -22,6 +22,7 @@ import { mockData } from "./mockGraphdata";
 import CustomNode from "@/components/CustomNode";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { useSearchParams } from "next/navigation";
 
 const CustomTooltip = ({ content, children, onClick, className }) => {
   return (
@@ -124,6 +125,10 @@ const OSINTGraphInner = () => {
   const nodesRef = useRef(nodes);
   const isProcessingRef = useRef(false);
   const [graphStatus, setGraphStatus] = useState("processing");
+  const params = useSearchParams();
+  const graphId = params.get("graphId");
+  const search = params.get("search");
+  const identifier = params.get("identifier");
 
   const { fitView } = useReactFlow();
 
@@ -392,13 +397,31 @@ const OSINTGraphInner = () => {
   };
 
   const fetchData = useCallback(async () => {
+    if (graphId) {
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          graphId: graphId,
+          // action: action,
+          // entityId: entityId,
+        }),
+      };
+      // const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "fetchGraph", options);
+
+      // const newData = await response.json();
+      // console.log("from fetch", newData);
+    }
+
     let filteredTree;
     if (selectedRoot) {
       filteredTree = findChildTree(treeData, selectedRoot);
     } else {
       filteredTree = treeData;
     }
-    // console.log("filtered Tree", filteredTree);
+    console.log("filtered Tree", filteredTree);
     const [newNodes, newEdges] = layoutNodes([filteredTree]);
     setNodes(newNodes);
     setEdges(newEdges);
@@ -417,6 +440,9 @@ const OSINTGraphInner = () => {
     if (selectedRoot) {
       fetchData();
     }
+    setTimeout(() => {
+      fitView(fitViewOptions);
+    }, 1000);
   }, [selectedRoot]);
 
   useEffect(() => {

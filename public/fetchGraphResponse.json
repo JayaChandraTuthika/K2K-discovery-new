@@ -1,0 +1,782 @@
+{
+    "id": "cf8dffc3-293c-4289-88d4-c8b1680aa16f",
+    "data": {
+        "label": "root",
+        "value": [
+            "initial_data"
+        ],
+        "metadata": "",
+        "type": "data"
+    },
+    "children": [
+        {
+            "id": "f568ffae-1408-4a06-9a43-cef2a4c3eace",
+            "data": {
+                "label": "domain",
+                "value": [
+                    "entercard.com"
+                ],
+                "metadata": "",
+                "type": "url"
+            },
+            "children": [
+                {
+                    "id": "0cedc7e4-fff4-42f3-8c26-0650903ef5a5",
+                    "data": {
+                        "label": "organization_id",
+                        "value": [
+                            "5f3ecef54265b700016f741e"
+                        ],
+                        "metadata": "",
+                        "type": "data"
+                    },
+                    "children": [
+                        {
+                            "id": "746175a4-7650-4559-93e2-7d031314f794",
+                            "data": {
+                                "label": "employees",
+                                "value": [
+                                    "Employees"
+                                ],
+                                "metadata": "",
+                                "type": "people"
+                            },
+                            "children": [
+                                {
+                                    "id": "d812318a-4b92-471e-884a-449932a56cef",
+                                    "data": {
+                                        "label": "person",
+                                        "value": [
+                                            "James Cooper"
+                                        ],
+                                        "metadata": "{'Name': 'James Cooper', 'Photo URL': 'https://static.licdn.com/aero-v1/sc/h/9c8pery4andzj6ohjkjp54ma2', 'Title': 'Senior Product Owner', 'Headline': 'Senior Product Owner'}",
+                                        "type": "people]"
+                                    },
+                                    "children": [
+                                        {
+                                            "id": "7130c4a5-dc9e-4949-a780-fc73aa587309",
+                                            "data": {
+                                                "label": "person",
+                                                "value": [
+                                                    "Contact Details"
+                                                ],
+                                                "metadata": "{'LinkedIn URL': 'http://www.linkedin.com/in/kristin-storaas-tusvik-85ba497', 'Email': 'email_not_unlocked@domain.com', 'Organization Website': 'http://www.entercard.com', 'Phone': '+852 3405 1300'}",
+                                                "type": "data"
+                                            },
+                                            "children": []
+                                        },
+                                        {
+                                            "id": "9e511715-4f28-4024-86ce-da4508ac7c81",
+                                            "data": {
+                                                "label": "person",
+                                                "value": [
+                                                    "Location"
+                                                ],
+                                                "metadata": "{'City': 'Oslo', 'Country': 'Norway'}",
+                                                "type": "data"
+                                            },
+                                            "children": []
+                                        },
+                                        {
+                                            "id": "d856ab01-93d4-4c79-a6a3-154fbd37f437",
+                                            "data": {
+                                                "label": "person",
+                                                "value": [
+                                                    "Employment History"
+                                                ],
+                                                "metadata": "[{'Organization': 'EnterCard Group AB', 'Title': 'Senior Project Manager'}, {'Organization': 'EnterCard Group AB', 'Title': 'Project Manager'}, {'Organization': 'EnterCard Group AB', 'Title': 'MDA (minor development activities) Specialist'}, {'Organization': 'eZ Systems', 'Title': 'Inside sales - Nordic'}, {'Organization': 'KDR', 'Title': 'Forhandleransvarlig Norge / salg'}, {'Organization': 'NetCom', 'Title': 'KAM'}, {'Organization': 'NetCom', 'Title': 'Product group manager'}, {'Organization': 'ElTele Øst', 'Title': 'Produktsjef GSM'}, {'Organization': 'Telenor Link', 'Title': 'Produktsjef'}, {'Organization': 'Bank-Axept', 'Title': 'Konsulent'}, {'Organization': 'Kunderådgiver, Fokus Bank', 'Title': 'Kunderådgiver'}]",
+                                                "type": "data"
+                                            },
+                                            "children": []
+                                        },
+                                        {
+                                            "id": "3042f7f8-2435-4aaa-b92e-485039e0b8d0",
+                                            "data": {
+                                                "label": "person",
+                                                "value": [
+                                                    "Organization Information"
+                                                ],
+                                                "metadata": "{'Name': 'Entercard Group AB', 'Founded Year': 2005, 'Logo URL': 'https://zenprospect-production.s3.amazonaws.com/uploads/pictures/6787bf2f16db280001dd2d23/picture', 'Website': 'http://www.entercard.com', 'Languages': ['English']}",
+                                                "type": "data"
+                                            },
+                                            "children": []
+                                        },
+                                        {
+                                            "id": "83f01335-88d7-4db4-b341-b0401d67ec07",
+                                            "data": {
+                                                "label": "person",
+                                                "value": [
+                                                    "Optional Information"
+                                                ],
+                                                "metadata": "{'Email Status': 'verified', 'Seniority Level': 'head', 'Functions': [], 'Departments': []}",
+                                                "type": "data"
+                                            },
+                                            "children": []
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "5489a11d-daf6-42c8-92fc-c6fba06bb5b3",
+                                    "data": {
+                                        "label": "person",
+                                        "value": [
+                                            "Magnus Koff"
+                                        ],
+                                        "metadata": "{'Name': 'Magnus Koff', 'Photo URL': 'https://media.licdn.com/dms/image/v2/C5603AQFKKdEekAqjPg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1520947289930?e=2147483647&v=beta&t=oFwmCHxNws78EaBwZn8BtE6RRsASneOYb-jyDnGDnMc', 'Title': 'Senior AML Rule and Analytics Specialist', 'Headline': 'Senior AML Specialist'}",
+                                        "type": "people]"
+                                    },
+                                    "children": [
+                                        {
+                                            "id": "766838ae-c558-47fa-ac93-ba5e7e9f995e",
+                                            "data": {
+                                                "label": "person",
+                                                "value": [
+                                                    "Contact Details"
+                                                ],
+                                                "metadata": "{'LinkedIn URL': 'http://www.linkedin.com/in/kristin-storaas-tusvik-85ba497', 'Email': 'email_not_unlocked@domain.com', 'Organization Website': 'http://www.entercard.com', 'Phone': '+852 3405 1300'}",
+                                                "type": "data"
+                                            },
+                                            "children": []
+                                        },
+                                        {
+                                            "id": "3b09a50a-5be5-4d5c-914d-1cd95d689574",
+                                            "data": {
+                                                "label": "person",
+                                                "value": [
+                                                    "Location"
+                                                ],
+                                                "metadata": "{'City': 'Oslo', 'Country': 'Norway'}",
+                                                "type": "data"
+                                            },
+                                            "children": []
+                                        },
+                                        {
+                                            "id": "1c6eb3af-e637-4d8d-a117-140a90c74e2a",
+                                            "data": {
+                                                "label": "person",
+                                                "value": [
+                                                    "Employment History"
+                                                ],
+                                                "metadata": "[{'Organization': 'EnterCard Group AB', 'Title': 'Senior Project Manager'}, {'Organization': 'EnterCard Group AB', 'Title': 'Project Manager'}, {'Organization': 'EnterCard Group AB', 'Title': 'MDA (minor development activities) Specialist'}, {'Organization': 'eZ Systems', 'Title': 'Inside sales - Nordic'}, {'Organization': 'KDR', 'Title': 'Forhandleransvarlig Norge / salg'}, {'Organization': 'NetCom', 'Title': 'KAM'}, {'Organization': 'NetCom', 'Title': 'Product group manager'}, {'Organization': 'ElTele Øst', 'Title': 'Produktsjef GSM'}, {'Organization': 'Telenor Link', 'Title': 'Produktsjef'}, {'Organization': 'Bank-Axept', 'Title': 'Konsulent'}, {'Organization': 'Kunderådgiver, Fokus Bank', 'Title': 'Kunderådgiver'}]",
+                                                "type": "data"
+                                            },
+                                            "children": []
+                                        },
+                                        {
+                                            "id": "d2ca5e31-aa84-4941-a0c7-032f8a206f70",
+                                            "data": {
+                                                "label": "person",
+                                                "value": [
+                                                    "Organization Information"
+                                                ],
+                                                "metadata": "{'Name': 'Entercard Group AB', 'Founded Year': 2005, 'Logo URL': 'https://zenprospect-production.s3.amazonaws.com/uploads/pictures/6787bf2f16db280001dd2d23/picture', 'Website': 'http://www.entercard.com', 'Languages': ['English']}",
+                                                "type": "data"
+                                            },
+                                            "children": []
+                                        },
+                                        {
+                                            "id": "769d4c38-8299-49b2-af2e-6ec4d684e1f9",
+                                            "data": {
+                                                "label": "person",
+                                                "value": [
+                                                    "Optional Information"
+                                                ],
+                                                "metadata": "{'Email Status': 'verified', 'Seniority Level': 'head', 'Functions': [], 'Departments': []}",
+                                                "type": "data"
+                                            },
+                                            "children": []
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "316857bf-ab3f-464e-ba5d-592ac64fa86b",
+                                    "data": {
+                                        "label": "person",
+                                        "value": [
+                                            "Fredrik Sigte"
+                                        ],
+                                        "metadata": "{'Name': 'Fredrik Sigte', 'Photo URL': 'https://static.licdn.com/aero-v1/sc/h/9c8pery4andzj6ohjkjp54ma2', 'Title': 'Head of Financial Risk', 'Headline': 'Head of Financial Risk at Entercard'}",
+                                        "type": "people]"
+                                    },
+                                    "children": [
+                                        {
+                                            "id": "6290395d-2480-4e5b-9763-ded031906edb",
+                                            "data": {
+                                                "label": "person",
+                                                "value": [
+                                                    "Contact Details"
+                                                ],
+                                                "metadata": "{'LinkedIn URL': 'http://www.linkedin.com/in/kristin-storaas-tusvik-85ba497', 'Email': 'email_not_unlocked@domain.com', 'Organization Website': 'http://www.entercard.com', 'Phone': '+852 3405 1300'}",
+                                                "type": "data"
+                                            },
+                                            "children": []
+                                        },
+                                        {
+                                            "id": "ac710b5e-9e23-4ecf-b8d7-dba3fbd0fd04",
+                                            "data": {
+                                                "label": "person",
+                                                "value": [
+                                                    "Location"
+                                                ],
+                                                "metadata": "{'City': 'Oslo', 'Country': 'Norway'}",
+                                                "type": "data"
+                                            },
+                                            "children": []
+                                        },
+                                        {
+                                            "id": "f29b8edb-a7aa-4372-8d5e-0fb2237d2f4a",
+                                            "data": {
+                                                "label": "person",
+                                                "value": [
+                                                    "Employment History"
+                                                ],
+                                                "metadata": "[{'Organization': 'EnterCard Group AB', 'Title': 'Senior Project Manager'}, {'Organization': 'EnterCard Group AB', 'Title': 'Project Manager'}, {'Organization': 'EnterCard Group AB', 'Title': 'MDA (minor development activities) Specialist'}, {'Organization': 'eZ Systems', 'Title': 'Inside sales - Nordic'}, {'Organization': 'KDR', 'Title': 'Forhandleransvarlig Norge / salg'}, {'Organization': 'NetCom', 'Title': 'KAM'}, {'Organization': 'NetCom', 'Title': 'Product group manager'}, {'Organization': 'ElTele Øst', 'Title': 'Produktsjef GSM'}, {'Organization': 'Telenor Link', 'Title': 'Produktsjef'}, {'Organization': 'Bank-Axept', 'Title': 'Konsulent'}, {'Organization': 'Kunderådgiver, Fokus Bank', 'Title': 'Kunderådgiver'}]",
+                                                "type": "data"
+                                            },
+                                            "children": []
+                                        },
+                                        {
+                                            "id": "cd7112eb-c486-4717-86e6-2892e3b6d992",
+                                            "data": {
+                                                "label": "person",
+                                                "value": [
+                                                    "Organization Information"
+                                                ],
+                                                "metadata": "{'Name': 'Entercard Group AB', 'Founded Year': 2005, 'Logo URL': 'https://zenprospect-production.s3.amazonaws.com/uploads/pictures/6787bf2f16db280001dd2d23/picture', 'Website': 'http://www.entercard.com', 'Languages': ['English']}",
+                                                "type": "data"
+                                            },
+                                            "children": []
+                                        },
+                                        {
+                                            "id": "760ef67e-4d3b-4515-a678-5bc68e96a94a",
+                                            "data": {
+                                                "label": "person",
+                                                "value": [
+                                                    "Optional Information"
+                                                ],
+                                                "metadata": "{'Email Status': 'verified', 'Seniority Level': 'head', 'Functions': [], 'Departments': []}",
+                                                "type": "data"
+                                            },
+                                            "children": []
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "d25958b7-e364-476c-9a1e-ebc418026571",
+                                    "data": {
+                                        "label": "person",
+                                        "value": [
+                                            "Paulina Koski"
+                                        ],
+                                        "metadata": "{'Name': 'Paulina Koski', 'Photo URL': 'https://media.licdn.com/dms/image/v2/C4E03AQHWGJQLr2JFVg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1516787967258?e=2147483647&v=beta&t=SlvOMAm5GsS7Ldlvrg8Ox-INwpNCXv1Imy6f7ZrjOoE', 'Title': 'Business Development – New Sales and M&A', 'Headline': 'Business Development – New Sales and M&A'}",
+                                        "type": "people]"
+                                    },
+                                    "children": [
+                                        {
+                                            "id": "960c7264-c11d-4297-bbd4-5edef1d11da8",
+                                            "data": {
+                                                "label": "person",
+                                                "value": [
+                                                    "Contact Details"
+                                                ],
+                                                "metadata": "{'LinkedIn URL': 'http://www.linkedin.com/in/kristin-storaas-tusvik-85ba497', 'Email': 'email_not_unlocked@domain.com', 'Organization Website': 'http://www.entercard.com', 'Phone': '+852 3405 1300'}",
+                                                "type": "data"
+                                            },
+                                            "children": []
+                                        },
+                                        {
+                                            "id": "d7c7dc85-b0ca-4e7a-9995-aaca3b82c642",
+                                            "data": {
+                                                "label": "person",
+                                                "value": [
+                                                    "Location"
+                                                ],
+                                                "metadata": "{'City': 'Oslo', 'Country': 'Norway'}",
+                                                "type": "data"
+                                            },
+                                            "children": []
+                                        },
+                                        {
+                                            "id": "f6827864-b615-49e6-8f03-1bfacbef4505",
+                                            "data": {
+                                                "label": "person",
+                                                "value": [
+                                                    "Employment History"
+                                                ],
+                                                "metadata": "[{'Organization': 'EnterCard Group AB', 'Title': 'Senior Project Manager'}, {'Organization': 'EnterCard Group AB', 'Title': 'Project Manager'}, {'Organization': 'EnterCard Group AB', 'Title': 'MDA (minor development activities) Specialist'}, {'Organization': 'eZ Systems', 'Title': 'Inside sales - Nordic'}, {'Organization': 'KDR', 'Title': 'Forhandleransvarlig Norge / salg'}, {'Organization': 'NetCom', 'Title': 'KAM'}, {'Organization': 'NetCom', 'Title': 'Product group manager'}, {'Organization': 'ElTele Øst', 'Title': 'Produktsjef GSM'}, {'Organization': 'Telenor Link', 'Title': 'Produktsjef'}, {'Organization': 'Bank-Axept', 'Title': 'Konsulent'}, {'Organization': 'Kunderådgiver, Fokus Bank', 'Title': 'Kunderådgiver'}]",
+                                                "type": "data"
+                                            },
+                                            "children": []
+                                        },
+                                        {
+                                            "id": "17e32cd5-b5c5-4768-8da3-cf142062861c",
+                                            "data": {
+                                                "label": "person",
+                                                "value": [
+                                                    "Organization Information"
+                                                ],
+                                                "metadata": "{'Name': 'Entercard Group AB', 'Founded Year': 2005, 'Logo URL': 'https://zenprospect-production.s3.amazonaws.com/uploads/pictures/6787bf2f16db280001dd2d23/picture', 'Website': 'http://www.entercard.com', 'Languages': ['English']}",
+                                                "type": "data"
+                                            },
+                                            "children": []
+                                        },
+                                        {
+                                            "id": "38504d3d-46a5-4c76-9d0d-9be8bc610a4c",
+                                            "data": {
+                                                "label": "person",
+                                                "value": [
+                                                    "Optional Information"
+                                                ],
+                                                "metadata": "{'Email Status': 'verified', 'Seniority Level': 'head', 'Functions': [], 'Departments': []}",
+                                                "type": "data"
+                                            },
+                                            "children": []
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "93824e2b-77f8-4f18-8355-def4d4e9cb71",
+                                    "data": {
+                                        "label": "person",
+                                        "value": [
+                                            "Prerna Nayyar"
+                                        ],
+                                        "metadata": "{'Name': 'Prerna Nayyar', 'Photo URL': 'https://media.licdn.com/dms/image/v2/C5603AQHqmmQIL5M2Ww/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1517007007740?e=2147483647&v=beta&t=oaSwV4-8jZf7pjv36wgm1rC2BIVEZp6s4iYe_mh_Zj4', 'Title': 'Senior Solutions Architect', 'Headline': 'Senior Solutions Architect at EnterCard'}",
+                                        "type": "people]"
+                                    },
+                                    "children": [
+                                        {
+                                            "id": "2273d18c-7f19-407e-9e5b-193d65899ee6",
+                                            "data": {
+                                                "label": "person",
+                                                "value": [
+                                                    "Contact Details"
+                                                ],
+                                                "metadata": "{'LinkedIn URL': 'http://www.linkedin.com/in/kristin-storaas-tusvik-85ba497', 'Email': 'email_not_unlocked@domain.com', 'Organization Website': 'http://www.entercard.com', 'Phone': '+852 3405 1300'}",
+                                                "type": "data"
+                                            },
+                                            "children": []
+                                        },
+                                        {
+                                            "id": "b06a5c03-3278-4104-b4fa-b3ef83601a5a",
+                                            "data": {
+                                                "label": "person",
+                                                "value": [
+                                                    "Location"
+                                                ],
+                                                "metadata": "{'City': 'Oslo', 'Country': 'Norway'}",
+                                                "type": "data"
+                                            },
+                                            "children": []
+                                        },
+                                        {
+                                            "id": "0621f911-28e2-4737-8cb0-21d436f921ed",
+                                            "data": {
+                                                "label": "person",
+                                                "value": [
+                                                    "Employment History"
+                                                ],
+                                                "metadata": "[{'Organization': 'EnterCard Group AB', 'Title': 'Senior Project Manager'}, {'Organization': 'EnterCard Group AB', 'Title': 'Project Manager'}, {'Organization': 'EnterCard Group AB', 'Title': 'MDA (minor development activities) Specialist'}, {'Organization': 'eZ Systems', 'Title': 'Inside sales - Nordic'}, {'Organization': 'KDR', 'Title': 'Forhandleransvarlig Norge / salg'}, {'Organization': 'NetCom', 'Title': 'KAM'}, {'Organization': 'NetCom', 'Title': 'Product group manager'}, {'Organization': 'ElTele Øst', 'Title': 'Produktsjef GSM'}, {'Organization': 'Telenor Link', 'Title': 'Produktsjef'}, {'Organization': 'Bank-Axept', 'Title': 'Konsulent'}, {'Organization': 'Kunderådgiver, Fokus Bank', 'Title': 'Kunderådgiver'}]",
+                                                "type": "data"
+                                            },
+                                            "children": []
+                                        },
+                                        {
+                                            "id": "7f8ebe20-d3c9-4d48-9ff9-3113afe02a8a",
+                                            "data": {
+                                                "label": "person",
+                                                "value": [
+                                                    "Organization Information"
+                                                ],
+                                                "metadata": "{'Name': 'Entercard Group AB', 'Founded Year': 2005, 'Logo URL': 'https://zenprospect-production.s3.amazonaws.com/uploads/pictures/6787bf2f16db280001dd2d23/picture', 'Website': 'http://www.entercard.com', 'Languages': ['English']}",
+                                                "type": "data"
+                                            },
+                                            "children": []
+                                        },
+                                        {
+                                            "id": "3763b2de-9f1c-4f30-97d2-0a7ed856b69f",
+                                            "data": {
+                                                "label": "person",
+                                                "value": [
+                                                    "Optional Information"
+                                                ],
+                                                "metadata": "{'Email Status': 'verified', 'Seniority Level': 'head', 'Functions': [], 'Departments': []}",
+                                                "type": "data"
+                                            },
+                                            "children": []
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "a60fce4c-0365-46ff-aa3d-fed46b41c56a",
+                                    "data": {
+                                        "label": "person",
+                                        "value": [
+                                            "Rodrigo Gallardo"
+                                        ],
+                                        "metadata": "{'Name': 'Rodrigo Gallardo', 'Photo URL': 'https://static.licdn.com/aero-v1/sc/h/244xhbkr7g40x6bsu4gi6q4ry', 'Title': 'Department Manager Service Desk', 'Headline': 'Department Manager Service Desk at Entercard Group AB'}",
+                                        "type": "people]"
+                                    },
+                                    "children": [
+                                        {
+                                            "id": "9d3403c1-9b2d-434d-9ed6-c2826edb23d9",
+                                            "data": {
+                                                "label": "person",
+                                                "value": [
+                                                    "Contact Details"
+                                                ],
+                                                "metadata": "{'LinkedIn URL': 'http://www.linkedin.com/in/kristin-storaas-tusvik-85ba497', 'Email': 'email_not_unlocked@domain.com', 'Organization Website': 'http://www.entercard.com', 'Phone': '+852 3405 1300'}",
+                                                "type": "data"
+                                            },
+                                            "children": []
+                                        },
+                                        {
+                                            "id": "fca54404-a6e0-4118-81e8-301e4bcff54f",
+                                            "data": {
+                                                "label": "person",
+                                                "value": [
+                                                    "Location"
+                                                ],
+                                                "metadata": "{'City': 'Oslo', 'Country': 'Norway'}",
+                                                "type": "data"
+                                            },
+                                            "children": []
+                                        },
+                                        {
+                                            "id": "9caa4b8f-1bf9-48ad-bf7c-a85af9e6a758",
+                                            "data": {
+                                                "label": "person",
+                                                "value": [
+                                                    "Employment History"
+                                                ],
+                                                "metadata": "[{'Organization': 'EnterCard Group AB', 'Title': 'Senior Project Manager'}, {'Organization': 'EnterCard Group AB', 'Title': 'Project Manager'}, {'Organization': 'EnterCard Group AB', 'Title': 'MDA (minor development activities) Specialist'}, {'Organization': 'eZ Systems', 'Title': 'Inside sales - Nordic'}, {'Organization': 'KDR', 'Title': 'Forhandleransvarlig Norge / salg'}, {'Organization': 'NetCom', 'Title': 'KAM'}, {'Organization': 'NetCom', 'Title': 'Product group manager'}, {'Organization': 'ElTele Øst', 'Title': 'Produktsjef GSM'}, {'Organization': 'Telenor Link', 'Title': 'Produktsjef'}, {'Organization': 'Bank-Axept', 'Title': 'Konsulent'}, {'Organization': 'Kunderådgiver, Fokus Bank', 'Title': 'Kunderådgiver'}]",
+                                                "type": "data"
+                                            },
+                                            "children": []
+                                        },
+                                        {
+                                            "id": "e493fe1f-223c-42c1-b353-b716e7d9091e",
+                                            "data": {
+                                                "label": "person",
+                                                "value": [
+                                                    "Organization Information"
+                                                ],
+                                                "metadata": "{'Name': 'Entercard Group AB', 'Founded Year': 2005, 'Logo URL': 'https://zenprospect-production.s3.amazonaws.com/uploads/pictures/6787bf2f16db280001dd2d23/picture', 'Website': 'http://www.entercard.com', 'Languages': ['English']}",
+                                                "type": "data"
+                                            },
+                                            "children": []
+                                        },
+                                        {
+                                            "id": "42e013d3-a901-4c66-a571-6379a16a6ff3",
+                                            "data": {
+                                                "label": "person",
+                                                "value": [
+                                                    "Optional Information"
+                                                ],
+                                                "metadata": "{'Email Status': 'verified', 'Seniority Level': 'head', 'Functions': [], 'Departments': []}",
+                                                "type": "data"
+                                            },
+                                            "children": []
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "5b1f4a0f-2798-444f-877e-1ff2f3613364",
+                                    "data": {
+                                        "label": "person",
+                                        "value": [
+                                            "Robert Hansen"
+                                        ],
+                                        "metadata": "{'Name': 'Robert Hansen', 'Photo URL': 'https://media.licdn.com/dms/image/v2/C4E03AQGqy6tuQ_LmQA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1575220832002?e=2147483647&v=beta&t=ctMZmQ6nzx2qhpiR_qNkx5tO7rOfR57zQYmCe8TgmcQ', 'Title': 'Head of Salesforce', 'Headline': 'Head of Salesforce at Entercard'}",
+                                        "type": "people]"
+                                    },
+                                    "children": [
+                                        {
+                                            "id": "521abc30-8d5b-4bfb-8fb8-9f53785111e8",
+                                            "data": {
+                                                "label": "person",
+                                                "value": [
+                                                    "Contact Details"
+                                                ],
+                                                "metadata": "{'LinkedIn URL': 'http://www.linkedin.com/in/kristin-storaas-tusvik-85ba497', 'Email': 'email_not_unlocked@domain.com', 'Organization Website': 'http://www.entercard.com', 'Phone': '+852 3405 1300'}",
+                                                "type": "data"
+                                            },
+                                            "children": []
+                                        },
+                                        {
+                                            "id": "4bbde4c6-92d6-4d19-9157-1fc82a35afd0",
+                                            "data": {
+                                                "label": "person",
+                                                "value": [
+                                                    "Location"
+                                                ],
+                                                "metadata": "{'City': 'Oslo', 'Country': 'Norway'}",
+                                                "type": "data"
+                                            },
+                                            "children": []
+                                        },
+                                        {
+                                            "id": "168b2232-79cb-4d1d-8102-0ab49f82ad03",
+                                            "data": {
+                                                "label": "person",
+                                                "value": [
+                                                    "Employment History"
+                                                ],
+                                                "metadata": "[{'Organization': 'EnterCard Group AB', 'Title': 'Senior Project Manager'}, {'Organization': 'EnterCard Group AB', 'Title': 'Project Manager'}, {'Organization': 'EnterCard Group AB', 'Title': 'MDA (minor development activities) Specialist'}, {'Organization': 'eZ Systems', 'Title': 'Inside sales - Nordic'}, {'Organization': 'KDR', 'Title': 'Forhandleransvarlig Norge / salg'}, {'Organization': 'NetCom', 'Title': 'KAM'}, {'Organization': 'NetCom', 'Title': 'Product group manager'}, {'Organization': 'ElTele Øst', 'Title': 'Produktsjef GSM'}, {'Organization': 'Telenor Link', 'Title': 'Produktsjef'}, {'Organization': 'Bank-Axept', 'Title': 'Konsulent'}, {'Organization': 'Kunderådgiver, Fokus Bank', 'Title': 'Kunderådgiver'}]",
+                                                "type": "data"
+                                            },
+                                            "children": []
+                                        },
+                                        {
+                                            "id": "3bc4b01c-a76a-4a67-9add-b6d6c43305e6",
+                                            "data": {
+                                                "label": "person",
+                                                "value": [
+                                                    "Organization Information"
+                                                ],
+                                                "metadata": "{'Name': 'Entercard Group AB', 'Founded Year': 2005, 'Logo URL': 'https://zenprospect-production.s3.amazonaws.com/uploads/pictures/6787bf2f16db280001dd2d23/picture', 'Website': 'http://www.entercard.com', 'Languages': ['English']}",
+                                                "type": "data"
+                                            },
+                                            "children": []
+                                        },
+                                        {
+                                            "id": "7f1580e3-fc3f-4954-8dd6-93e6a7f50129",
+                                            "data": {
+                                                "label": "person",
+                                                "value": [
+                                                    "Optional Information"
+                                                ],
+                                                "metadata": "{'Email Status': 'verified', 'Seniority Level': 'head', 'Functions': [], 'Departments': []}",
+                                                "type": "data"
+                                            },
+                                            "children": []
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "3d8903a6-ffd2-46f2-aaba-2ad42cda788e",
+                                    "data": {
+                                        "label": "person",
+                                        "value": [
+                                            "Subhankar Basumullick"
+                                        ],
+                                        "metadata": "{'Name': 'Subhankar Basumullick', 'Photo URL': 'https://media.licdn.com/dms/image/v2/C4E03AQG8iNmh0eULUg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1626587998550?e=2147483647&v=beta&t=cV-ggAf2SbB5vzigXuM6sJ2rryrRL-to0hSXt_FnNdY', 'Title': 'Senior Project Manager', 'Headline': 'Senior Project Manager'}",
+                                        "type": "people]"
+                                    },
+                                    "children": [
+                                        {
+                                            "id": "22421597-07fa-4cf7-ab99-a2852c6d042d",
+                                            "data": {
+                                                "label": "person",
+                                                "value": [
+                                                    "Contact Details"
+                                                ],
+                                                "metadata": "{'LinkedIn URL': 'http://www.linkedin.com/in/kristin-storaas-tusvik-85ba497', 'Email': 'email_not_unlocked@domain.com', 'Organization Website': 'http://www.entercard.com', 'Phone': '+852 3405 1300'}",
+                                                "type": "data"
+                                            },
+                                            "children": []
+                                        },
+                                        {
+                                            "id": "e64d8aae-8012-4d4c-b31f-44e318cedb02",
+                                            "data": {
+                                                "label": "person",
+                                                "value": [
+                                                    "Location"
+                                                ],
+                                                "metadata": "{'City': 'Oslo', 'Country': 'Norway'}",
+                                                "type": "data"
+                                            },
+                                            "children": []
+                                        },
+                                        {
+                                            "id": "da280344-1f44-46bc-85e1-4fd1b1a42f12",
+                                            "data": {
+                                                "label": "person",
+                                                "value": [
+                                                    "Employment History"
+                                                ],
+                                                "metadata": "[{'Organization': 'EnterCard Group AB', 'Title': 'Senior Project Manager'}, {'Organization': 'EnterCard Group AB', 'Title': 'Project Manager'}, {'Organization': 'EnterCard Group AB', 'Title': 'MDA (minor development activities) Specialist'}, {'Organization': 'eZ Systems', 'Title': 'Inside sales - Nordic'}, {'Organization': 'KDR', 'Title': 'Forhandleransvarlig Norge / salg'}, {'Organization': 'NetCom', 'Title': 'KAM'}, {'Organization': 'NetCom', 'Title': 'Product group manager'}, {'Organization': 'ElTele Øst', 'Title': 'Produktsjef GSM'}, {'Organization': 'Telenor Link', 'Title': 'Produktsjef'}, {'Organization': 'Bank-Axept', 'Title': 'Konsulent'}, {'Organization': 'Kunderådgiver, Fokus Bank', 'Title': 'Kunderådgiver'}]",
+                                                "type": "data"
+                                            },
+                                            "children": []
+                                        },
+                                        {
+                                            "id": "44b0ee20-86e4-4f2e-9cd3-d6c65d10e2bf",
+                                            "data": {
+                                                "label": "person",
+                                                "value": [
+                                                    "Organization Information"
+                                                ],
+                                                "metadata": "{'Name': 'Entercard Group AB', 'Founded Year': 2005, 'Logo URL': 'https://zenprospect-production.s3.amazonaws.com/uploads/pictures/6787bf2f16db280001dd2d23/picture', 'Website': 'http://www.entercard.com', 'Languages': ['English']}",
+                                                "type": "data"
+                                            },
+                                            "children": []
+                                        },
+                                        {
+                                            "id": "0ce21b24-6b7f-4517-89c4-b56f254653ad",
+                                            "data": {
+                                                "label": "person",
+                                                "value": [
+                                                    "Optional Information"
+                                                ],
+                                                "metadata": "{'Email Status': 'verified', 'Seniority Level': 'head', 'Functions': [], 'Departments': []}",
+                                                "type": "data"
+                                            },
+                                            "children": []
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "863514cf-19dc-4fa5-b04d-70f34cb446ce",
+                                    "data": {
+                                        "label": "person",
+                                        "value": [
+                                            "Jens Friesendorff"
+                                        ],
+                                        "metadata": "{'Name': 'Jens Friesendorff', 'Photo URL': 'https://static.licdn.com/aero-v1/sc/h/9c8pery4andzj6ohjkjp54ma2', 'Title': 'Head of Legal', 'Headline': 'Head of Legal på Entercard'}",
+                                        "type": "people]"
+                                    },
+                                    "children": [
+                                        {
+                                            "id": "0299b2f2-ea10-42b6-b9d2-1d4844a38269",
+                                            "data": {
+                                                "label": "person",
+                                                "value": [
+                                                    "Contact Details"
+                                                ],
+                                                "metadata": "{'LinkedIn URL': 'http://www.linkedin.com/in/kristin-storaas-tusvik-85ba497', 'Email': 'email_not_unlocked@domain.com', 'Organization Website': 'http://www.entercard.com', 'Phone': '+852 3405 1300'}",
+                                                "type": "data"
+                                            },
+                                            "children": []
+                                        },
+                                        {
+                                            "id": "72a85571-21f7-4290-9210-d8b6c8bd8f28",
+                                            "data": {
+                                                "label": "person",
+                                                "value": [
+                                                    "Location"
+                                                ],
+                                                "metadata": "{'City': 'Oslo', 'Country': 'Norway'}",
+                                                "type": "data"
+                                            },
+                                            "children": []
+                                        },
+                                        {
+                                            "id": "86671054-3138-472f-b312-c81ecbe57611",
+                                            "data": {
+                                                "label": "person",
+                                                "value": [
+                                                    "Employment History"
+                                                ],
+                                                "metadata": "[{'Organization': 'EnterCard Group AB', 'Title': 'Senior Project Manager'}, {'Organization': 'EnterCard Group AB', 'Title': 'Project Manager'}, {'Organization': 'EnterCard Group AB', 'Title': 'MDA (minor development activities) Specialist'}, {'Organization': 'eZ Systems', 'Title': 'Inside sales - Nordic'}, {'Organization': 'KDR', 'Title': 'Forhandleransvarlig Norge / salg'}, {'Organization': 'NetCom', 'Title': 'KAM'}, {'Organization': 'NetCom', 'Title': 'Product group manager'}, {'Organization': 'ElTele Øst', 'Title': 'Produktsjef GSM'}, {'Organization': 'Telenor Link', 'Title': 'Produktsjef'}, {'Organization': 'Bank-Axept', 'Title': 'Konsulent'}, {'Organization': 'Kunderådgiver, Fokus Bank', 'Title': 'Kunderådgiver'}]",
+                                                "type": "data"
+                                            },
+                                            "children": []
+                                        },
+                                        {
+                                            "id": "d82a444a-0e49-46c3-ac1a-735a4ec24e08",
+                                            "data": {
+                                                "label": "person",
+                                                "value": [
+                                                    "Organization Information"
+                                                ],
+                                                "metadata": "{'Name': 'Entercard Group AB', 'Founded Year': 2005, 'Logo URL': 'https://zenprospect-production.s3.amazonaws.com/uploads/pictures/6787bf2f16db280001dd2d23/picture', 'Website': 'http://www.entercard.com', 'Languages': ['English']}",
+                                                "type": "data"
+                                            },
+                                            "children": []
+                                        },
+                                        {
+                                            "id": "5152a455-a512-4524-b549-09b2e6646a8a",
+                                            "data": {
+                                                "label": "person",
+                                                "value": [
+                                                    "Optional Information"
+                                                ],
+                                                "metadata": "{'Email Status': 'verified', 'Seniority Level': 'head', 'Functions': [], 'Departments': []}",
+                                                "type": "data"
+                                            },
+                                            "children": []
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "fc731196-2ac8-412d-af99-a8142cce0147",
+                                    "data": {
+                                        "label": "person",
+                                        "value": [
+                                            "Kristin Tusvik"
+                                        ],
+                                        "metadata": "{'Name': 'Kristin Tusvik', 'Photo URL': 'https://media.licdn.com/dms/image/v2/C5603AQGktt25nuIBCw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1516339125736?e=2147483647&v=beta&t=MI2oaBCT3GdTT5F15WX4g5cfqlovebpE4-FizXWPR5g', 'Title': 'Senior Project Manager', 'Headline': 'Senior Project Manager'}",
+                                        "type": "people]"
+                                    },
+                                    "children": [
+                                        {
+                                            "id": "7013a094-319b-4722-bda1-8a5e147486b7",
+                                            "data": {
+                                                "label": "person",
+                                                "value": [
+                                                    "Contact Details"
+                                                ],
+                                                "metadata": "{'LinkedIn URL': 'http://www.linkedin.com/in/kristin-storaas-tusvik-85ba497', 'Email': 'email_not_unlocked@domain.com', 'Organization Website': 'http://www.entercard.com', 'Phone': '+852 3405 1300'}",
+                                                "type": "data"
+                                            },
+                                            "children": []
+                                        },
+                                        {
+                                            "id": "5ff34b8a-345b-4017-8538-2b100e3663c3",
+                                            "data": {
+                                                "label": "person",
+                                                "value": [
+                                                    "Location"
+                                                ],
+                                                "metadata": "{'City': 'Oslo', 'Country': 'Norway'}",
+                                                "type": "data"
+                                            },
+                                            "children": []
+                                        },
+                                        {
+                                            "id": "86a1a988-f8a0-4e18-b9de-5c43671f64e8",
+                                            "data": {
+                                                "label": "person",
+                                                "value": [
+                                                    "Employment History"
+                                                ],
+                                                "metadata": "[{'Organization': 'EnterCard Group AB', 'Title': 'Senior Project Manager'}, {'Organization': 'EnterCard Group AB', 'Title': 'Project Manager'}, {'Organization': 'EnterCard Group AB', 'Title': 'MDA (minor development activities) Specialist'}, {'Organization': 'eZ Systems', 'Title': 'Inside sales - Nordic'}, {'Organization': 'KDR', 'Title': 'Forhandleransvarlig Norge / salg'}, {'Organization': 'NetCom', 'Title': 'KAM'}, {'Organization': 'NetCom', 'Title': 'Product group manager'}, {'Organization': 'ElTele Øst', 'Title': 'Produktsjef GSM'}, {'Organization': 'Telenor Link', 'Title': 'Produktsjef'}, {'Organization': 'Bank-Axept', 'Title': 'Konsulent'}, {'Organization': 'Kunderådgiver, Fokus Bank', 'Title': 'Kunderådgiver'}]",
+                                                "type": "data"
+                                            },
+                                            "children": []
+                                        },
+                                        {
+                                            "id": "24a0d272-5c0d-42cd-a8dd-4d59f22b6119",
+                                            "data": {
+                                                "label": "person",
+                                                "value": [
+                                                    "Organization Information"
+                                                ],
+                                                "metadata": "{'Name': 'Entercard Group AB', 'Founded Year': 2005, 'Logo URL': 'https://zenprospect-production.s3.amazonaws.com/uploads/pictures/6787bf2f16db280001dd2d23/picture', 'Website': 'http://www.entercard.com', 'Languages': ['English']}",
+                                                "type": "data"
+                                            },
+                                            "children": []
+                                        },
+                                        {
+                                            "id": "46da8220-8cfc-4a61-9434-588e51ba1486",
+                                            "data": {
+                                                "label": "person",
+                                                "value": [
+                                                    "Optional Information"
+                                                ],
+                                                "metadata": "{'Email Status': 'verified', 'Seniority Level': 'head', 'Functions': [], 'Departments': []}",
+                                                "type": "data"
+                                            },
+                                            "children": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
