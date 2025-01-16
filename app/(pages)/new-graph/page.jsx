@@ -125,10 +125,11 @@ const OSINTGraphInner = () => {
   const nodesRef = useRef(nodes);
   const isProcessingRef = useRef(false);
   const [graphStatus, setGraphStatus] = useState("processing");
-  const params = useSearchParams();
-  const graphId = params.get("graphId");
-  const search = params.get("search");
-  const identifier = params.get("identifier");
+  // const params = useSearchParams();
+  const graphId = "test";
+  // const graphId = params.get("graphId");
+  // const search = params.get("search");
+  // const identifier = params.get("identifier");
 
   const { fitView } = useReactFlow();
 
