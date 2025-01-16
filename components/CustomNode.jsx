@@ -1,46 +1,40 @@
 import React from "react";
-import { FaUser } from "react-icons/fa";
+import { FaPhoneAlt, FaRegUser, FaUser } from "react-icons/fa";
+import { HiOutlineMail } from "react-icons/hi";
+import { MdEmail, MdOutlineMail } from "react-icons/md";
+import { IoIosLink } from "react-icons/io";
 import { Handle, Position } from "reactflow";
+import { TbListDetails } from "react-icons/tb";
 
-// function CustomNode({ data, isConnectable, onClick }) {
-//   return (
-//     <div
-//       className={`px-3 py-2 shadow-md rounded-md bg-white text-sm ${
-//         data.type === "root" ? "custom-node-root" : "custom-node-child"
-//       } `}
-//       onClick={onClick}
-//     >
-//       <Handle
-//         type="target"
-//         position={Position.Top}
-//         isConnectable={isConnectable}
-//       />
-//       <div className="font-semibold">{data.label}</div>
-//       <div className="text-xs text-gray-500">{data.type}</div>
-//       <Handle
-//         type="source"
-//         position={Position.Bottom}
-//         isConnectable={isConnectable}
-//       />
-//     </div>
-//   );
-// }
+const iconTypes = ["email", "phone", "url", "person", "data"];
 
 const CustomNode = ({ data }) => {
-  const Icon = data.icon || FaUser;
+  let Icon = data.icon || TbListDetails;
+  const iconType = data.type || "default";
+  if (iconType == "email") {
+    Icon = MdOutlineMail;
+  } else if (iconType == "phone") {
+    Icon = FaPhoneAlt;
+  } else if (iconType == "url") {
+    Icon = IoIosLink;
+  } else if (iconType == "person") {
+    Icon = FaRegUser;
+  } else if (iconType == "data") {
+    Icon = TbListDetails;
+  }
   let bgColor;
   let textColor;
   switch (data.level) {
     case 0:
-      bgColor = "#B6E2A1";
+      bgColor = "#227f8a";
       textColor = "#295F98";
       break;
     case 1:
-      bgColor = "#FF9F9F";
+      bgColor = "#5b27a3";
       textColor = "#FF8A8A";
       break;
     case 2:
-      bgColor = "#F8EDE3";
+      bgColor = "#732c59";
       textColor = "#55AD9B";
       break;
     default:
@@ -50,34 +44,25 @@ const CustomNode = ({ data }) => {
   }
 
   return (
-    <div
-      className="rounded-sm p-1 px-2 text-xs"
-      style={{ backgroundColor: bgColor, color: "black" }}
-    >
-      <Handle type="target" position={Position.Left} />
-      <div onClick={data.onClick} className="flex gap-2 justify-center items-center">
+    <div className="custom-node" style={{ borderColor: bgColor, color: "white" }}>
+      <Handle type="target" style={{ backgroundColor: bgColor }} position={Position.Left} />
+      <div
+        onClick={data.onClick}
+        className="node-header"
+        style={{ backgroundColor: bgColor, color: "white", borderColor: bgColor }}
+      >
         <Icon className="node-icon" />
         <span className="node-label">{data.label}</span>
         {data.children && data.children.length > 0 && (
-          <span
-            className="node-childcount"
-            style={{
-              backgroundColor: "#fff",
-              color: "black",
-              borderRadius: "10px",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              width: "20px",
-              height: "20px",
-              fontSize: "8px",
-            }}
-          >
-            {data.children.length}
-          </span>
+          <span className="node-childcount">{data.children.length}</span>
         )}
       </div>
-      <Handle type="source" position={Position.Right} />
+      <Handle type="source" position={Position.Right} style={{ backgroundColor: bgColor }} />
+      <div className="node-description">
+        {data.value.map((val) => (
+          <p>{val}</p>
+        ))}
+      </div>
     </div>
   );
 };

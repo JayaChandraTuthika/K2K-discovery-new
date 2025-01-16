@@ -16,6 +16,7 @@
 * {
   box-sizing: border-box;
   margin: 0;
+  outline: none;
 }
 
 body {
@@ -486,64 +487,7 @@ body {
   background-color: transparent;
   color: white;
 }
-.graph-bg {
-}
-.graph-header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 10%;
-  gap: 20px;
-}
-.graph-header h1 {
-  font-size: 30px;
-  font-weight: 600;
-  background-image: var(--infosec-gradient);
-  color: transparent;
-  background-clip: text;
-  -moz-background-clip: text;
-  -webkit-background-clip: text;
-  pointer-events: none;
-  user-select: none;
-}
-.collapse-all-btn {
-  /* position: absolute;
-  top: 20px;
-  right: 40px; */
-  color: black;
-  border: 1px solid transparent;
-  padding: 5px 13px;
-  border-radius: 4px;
-  outline: none !important;
-}
-.collapse-all-btn:hover {
-  background-color: transparent !important;
-  color: white;
-  border: 1px solid white;
-}
-.graph-report-btn {
-  position: absolute;
-  bottom: 30px;
-  right: 40px;
-  color: black;
-  border: 1px solid transparent;
-  padding: 5px 13px;
-  border-radius: 4px;
-  outline: none !important;
-  cursor: pointer;
-  background-color: white;
-}
-.graph-report-btn:hover {
-  color: black;
-  border: 1px solid transparent;
-  background-color: white !important;
-}
-.react-flow__attribution {
-  display: none;
-}
+
 /* Toast styles */
 .success-toast {
   border: none;
@@ -612,6 +556,135 @@ body {
 .custom-tooltip .desc {
   color: rgba(0, 0, 0, 0.461);
 }
+
+/* Custom styles for Graph UI  [start] */
+.graph-bg {
+}
+.graph-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  padding: 20px 5%;
+  gap: 20px;
+}
+.graph-header h1 {
+  font-size: 30px;
+  font-weight: 600;
+  background-image: var(--infosec-gradient);
+  color: transparent;
+  background-clip: text;
+  -moz-background-clip: text;
+  -webkit-background-clip: text;
+  pointer-events: none;
+  user-select: none;
+}
+.graph-bg .collapse-all-btn {
+  position: absolute;
+  top: 15vh;
+  left: 110px;
+  color: black;
+  border: 1px solid transparent;
+  padding: 5px 13px;
+  border-radius: 4px;
+  outline: none !important;
+}
+.graph-bg .collapse-parent-btn {
+  position: absolute;
+  top: 23vh;
+  left: 110px;
+  color: black;
+  border: 1px solid transparent;
+  padding: 5px 13px;
+  border-radius: 4px;
+  outline: none !important;
+}
+.graph-bg .collapse-all-btn:hover {
+  background-color: transparent !important;
+  color: white;
+  border: 1px solid white;
+}
+.graph-bg .graph-report-btn {
+  position: absolute;
+  bottom: 30px;
+  right: 40px;
+  color: black;
+  border: 1px solid transparent;
+  padding: 5px 13px;
+  border-radius: 4px;
+  outline: none !important;
+  cursor: pointer;
+  background-color: white;
+}
+.graph-report-btn:hover {
+  color: black;
+  border: 1px solid transparent;
+  background-color: white !important;
+}
+.react-flow__attribution {
+  display: none;
+}
+.custom-node {
+  padding: 0px;
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.269);
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+  overflow: hidden;
+  /* display: flex;
+  align-items: center; */
+  font-size: 12px;
+  outline: none;
+}
+.node-header {
+  display: flex;
+  padding: 2px 5px;
+  align-items: center;
+  margin: 0;
+  border: none;
+  transform: translateZ(0);
+  line-height: 1;
+  box-sizing: border-box;
+  box-shadow: none;
+  outline: none;
+}
+.node-header .node-label {
+  padding: 0;
+  margin-bottom: 2px;
+}
+.node-header .node-childcount {
+  background-color: #fff;
+  color: black;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  font-size: 8px;
+  margin-left: 3px;
+}
+.node-description {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 2px 5px 2px 10px;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.799);
+}
+.node-icon {
+  margin-right: 5px;
+}
+.node-label {
+  cursor: pointer;
+}
+
+/* Custom styles for Graph UI  [end] */
+
 @layer base {
   :root {
     /* --background: 0 0% 100%; */

@@ -1,10 +1,4 @@
-import React, {
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
-  useRef,
-} from "react";
+import React, { useCallback, useEffect, useMemo, useState, useRef } from "react";
 import ReactFlow, {
   MiniMap,
   Controls,
@@ -13,12 +7,7 @@ import ReactFlow, {
   useEdgesState,
   useReactFlow,
 } from "reactflow";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import dagre from "dagre";
 import "reactflow/dist/style.css";
 import CustomNode from "./CustomNode";
@@ -110,8 +99,10 @@ function OsintGraph({ initialEntity, pollInterval = 5000, graphId }) {
         className: "stroke-muted-foreground",
       }));
 
-      const { nodes: layoutedNodes, edges: layoutedEdges } =
-        getLayoutedElements(newNodes, newEdges);
+      const { nodes: layoutedNodes, edges: layoutedEdges } = getLayoutedElements(
+        newNodes,
+        newEdges
+      );
 
       setNodes(layoutedNodes);
       setEdges(layoutedEdges);
@@ -140,10 +131,7 @@ function OsintGraph({ initialEntity, pollInterval = 5000, graphId }) {
             entityId: entityId,
           }),
         };
-        const response = await fetch(
-          process.env.NEXT_PUBLIC_API_URL + "fetchGraph",
-          options
-        );
+        const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "fetchGraph", options);
 
         const newData = await response.json();
         console.log("from fetch", newData);
@@ -227,10 +215,7 @@ function OsintGraph({ initialEntity, pollInterval = 5000, graphId }) {
   }, []);
 
   return (
-    <div
-      ref={containerRef}
-      className="w-full h-screen flex flex-col bg-background graph-bg"
-    >
+    <div ref={containerRef} className="w-full h-screen flex flex-col bg-background graph-bg">
       <ReactFlow
         nodes={nodes}
         edges={edges}
@@ -272,24 +257,12 @@ function OsintGraph({ initialEntity, pollInterval = 5000, graphId }) {
         </CustomTooltip>
       </div>
       {graphStatus === "completed" ? (
-        <Button
-          className="bg-secondary graph-report-btn"
-          onClick={() => router.push("/dashboard")}
-        >
+        <Button className="bg-secondary graph-report-btn" onClick={() => router.push("/dashboard")}>
           Dashboard
         </Button>
       ) : (
-        <Button
-          className="bg-secondary graph-report-btn"
-          style={{ cursor: "progress" }}
-        >
-          <Image
-            src="/img/wheel-loader.gif"
-            unoptimized
-            width={30}
-            height={30}
-            alt="gears"
-          />
+        <Button className="bg-secondary graph-report-btn" style={{ cursor: "progress" }}>
+          <Image src="/img/wheel-loader.gif" unoptimized width={30} height={30} alt="gears" />
           Generating Graph please wait...
         </Button>
       )}

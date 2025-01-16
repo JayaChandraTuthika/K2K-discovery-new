@@ -16,82 +16,27 @@ import ReactFlow, {
 } from "reactflow";
 import "reactflow/dist/style.css";
 import { FaUser, FaBuilding, FaGlobe, FaEnvelope, FaPhone } from "react-icons/fa";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+
 import { mockData } from "./mockGraphdata";
 import CustomNode from "@/components/CustomNode";
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
-// const mockData = {
-//   id: "root",
-//   data: { label: "John Doe", icon: FaUser },
-//   children: [
-//     {
-//       id: "1",
-//       data: { label: "Acme Corp", icon: FaBuilding },
-//       children: [
-//         {
-//           id: "1-1",
-//           data: { label: "acme.com", icon: FaGlobe },
-//           children: [
-//             {
-//               id: "1-1-1",
-//               data: { label: "test@acme.com", icon: FaEnvelope },
-//               children: [{ id: "1-1-1-1", data: { label: "test2@acme.com", icon: FaEnvelope } }],
-//             },
-//           ],
-//         },
-//         { id: "1-2", data: { label: "info@acme.com", icon: FaEnvelope } },
-//       ],
-//     },
-//     {
-//       id: "2",
-//       data: { label: "Personal", icon: FaUser },
-//       children: [
-//         { id: "2-1", data: { label: "john@email.com", icon: FaEnvelope } },
-//         { id: "2-2", data: { label: "+1 123-456-7890", icon: FaPhone } },
-//       ],
-//     },
-//     {
-//       id: "3",
-//       data: { label: "Social", icon: FaUser },
-//       children: [
-//         { id: "3-1", data: { label: "Twitter", icon: FaGlobe } },
-//         { id: "3-2", data: { label: "LinkedIn", icon: FaGlobe } },
-//       ],
-//     },
-//   ],
-// };
-
-// const CustomNode = ({ data }) => {
-//   const Icon = data.icon || FaUser;
-//   // console.log(data);
-//   return (
-//     <div className="custom-node bg-secondary text-slate-950 rounded-sm p-1 px-2 text-xs">
-//       <Handle type="target" position={Position.Left} />
-//       <div onClick={data.onClick} className="flex gap-2 justify-center items-center">
-//         <Icon className="node-icon" />
-//         <span className="node-label">{data.label}</span>
-//         {data.children && data.children.length > 0 && (
-//           <span
-//             className="node-childcount"
-//             style={{
-//               backgroundColor: "#0bf499",
-//               color: "black",
-//               borderRadius: "10px",
-//               display: "flex",
-//               justifyContent: "center",
-//               alignItems: "center",
-//               width: "20px",
-//               height: "20px",
-//               fontSize: "8px",
-//             }}
-//           >
-//             {data.children.length}
-//           </span>
-//         )}
-//       </div>
-//       <Handle type="source" position={Position.Right} />
-//     </div>
-//   );
-// };
+const CustomTooltip = ({ content, children, onClick, className }) => {
+  return (
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger onClick={onClick} className={`${className}`}>
+          {children}
+        </TooltipTrigger>
+        <TooltipContent className="bg-emerald-400 text-slate-950" side="right">
+          <p>{content}</p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+  );
+};
 
 const nodeTypes = {
   custom: CustomNode,
@@ -106,10 +51,16 @@ const initialNodes = [
   },
 ];
 
+const fitViewOptions = {
+  duration: 1000,
+  padding: 0.2,
+  includeHiddenNodes: false,
+};
+
 const initialEdges = [];
 
-const findChildTree = (treeData, selectedRoot) => {
-  const rootId = selectedRoot.id;
+const findChildTree = (treeData, selectedRootId) => {
+  const rootId = selectedRootId;
   // console.log("selected root id", rootId);
   const getChild = (node) => {
     if (node.id === rootId) {
@@ -127,6 +78,44 @@ const findChildTree = (treeData, selectedRoot) => {
   return getChild(treeData);
 };
 
+const findParentTree = (treeData, selectedRootId) => {
+  const rootId = selectedRootId;
+  // console.log("selected root id", rootId);
+  const getParent = (node) => {
+    // if (node.id === rootId) {
+    //   return node;
+    // } else {
+    //   if (node.children) {
+    //     let childFound;
+    //     node.children.forEach((ch) => {
+    //       if (!childFound) childFound = getChild(ch);
+    //     });
+    //     if (childFound) return childFound;
+    //   }
+    // }
+    if (node.children) {
+      let childExist = node.children.find((ch) => ch.id === selectedRootId);
+      if (childExist) {
+        return node;
+      } else {
+        let parentFound;
+        node.children.forEach((ch) => {
+          let parent = getParent(ch);
+          if (parent) {
+            parentFound = parent;
+            return;
+          }
+        });
+        if (parentFound) {
+          return parentFound;
+        }
+      }
+    }
+  };
+  let output = getParent(treeData);
+  return output;
+};
+
 const OSINTGraphInner = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
@@ -134,8 +123,35 @@ const OSINTGraphInner = () => {
   const [selectedRoot, setSelectedRoot] = useState(null);
   const nodesRef = useRef(nodes);
   const isProcessingRef = useRef(false);
+  const [graphStatus, setGraphStatus] = useState("processing");
 
   const { fitView } = useReactFlow();
+
+  const collapseToRoot = () => {
+    const actionTypes = "collapse" || "expand" || "root";
+    const action = "root";
+    setSelectedRoot(null);
+    setTimeout(() => {
+      fitView(fitViewOptions);
+    }, 1000);
+  };
+
+  const collapseParent = () => {
+    // console.log(nodes, selectedRoot);
+    if (selectedRoot && treeData) {
+      let filteredTree;
+      // setSelectedRoot(selectedRoot.parentNode);
+      if (selectedRoot) {
+        filteredTree = findParentTree(treeData, selectedRoot);
+      } else {
+        filteredTree = treeData;
+      }
+      setSelectedRoot(filteredTree.id);
+      // const [newNodes, newEdges] = layoutNodes([filteredTree]);
+      // setNodes(newNodes);
+      // setEdges(newEdges);
+    }
+  };
 
   // const toggleChildrenVisibility = useCallback(
   //   (nodeId, expandFlag) => {
@@ -303,8 +319,9 @@ const OSINTGraphInner = () => {
   );
 
   const onNodeClick = (event, node) => {
+    console.log("Clicked node", node);
     if (node && node.id) {
-      setSelectedRoot(node);
+      setSelectedRoot(node.id);
       // toggleChildrenVisibility(node.id);
     }
   };
@@ -351,9 +368,14 @@ const OSINTGraphInner = () => {
           id: `${parentId}-${node.id}`,
           source: parentId,
           target: node.id,
-          type: "default",
+          type: "simplebezier",
           animated: true,
-          style: { stroke: "#888" },
+          markerStart: "test",
+          markerEnd: "test",
+          style: {
+            stroke: level === 1 ? "#227f8a" : level === 2 ? "#5b27a3" : "#84c9d1",
+            strokeWidth: 1,
+          },
           markerEnd: { type: MarkerType.ArrowClosed, color: "#888" },
           hidden: level > 2, //specify level here ex: level > 2
         });
@@ -370,41 +392,6 @@ const OSINTGraphInner = () => {
   };
 
   const fetchData = useCallback(async () => {
-    // const mockData = {
-    //   id: "root",
-    //   data: { label: "John Doe", icon: FaUser },
-    //   children: [
-    //     {
-    //       id: "1",
-    //       data: { label: "Acme Corp", icon: FaBuilding },
-    //       children: [
-    //         {
-    //           id: "1-1",
-    //           data: { label: "acme.com", icon: FaGlobe },
-    //           children: [{ id: "1-1-1", data: { label: "test@acme.com", icon: FaEnvelope } }],
-    //         },
-    //         { id: "1-2", data: { label: "info@acme.com", icon: FaEnvelope } },
-    //       ],
-    //     },
-    //     {
-    //       id: "2",
-    //       data: { label: "Personal", icon: FaUser },
-    //       children: [
-    //         { id: "2-1", data: { label: "john@email.com", icon: FaEnvelope } },
-    //         { id: "2-2", data: { label: "+1 123-456-7890", icon: FaPhone } },
-    //       ],
-    //     },
-    //     {
-    //       id: "3",
-    //       data: { label: "Social", icon: FaUser },
-    //       children: [
-    //         { id: "3-1", data: { label: "Twitter", icon: FaGlobe } },
-    //         { id: "3-2", data: { label: "LinkedIn", icon: FaGlobe } },
-    //       ],
-    //     },
-    //   ],
-    // };
-    // console.log("tree", treeData);
     let filteredTree;
     if (selectedRoot) {
       filteredTree = findChildTree(treeData, selectedRoot);
@@ -418,7 +405,7 @@ const OSINTGraphInner = () => {
   }, [setNodes, setEdges, selectedRoot]);
 
   useEffect(() => {
-    const timer = setInterval(() => {
+    const timer = setTimeout(() => {
       fetchData();
     }, 2000);
 
@@ -432,24 +419,36 @@ const OSINTGraphInner = () => {
     }
   }, [selectedRoot]);
 
-  const fitViewOptions = {
-    duration: 1000,
-    padding: 0.2,
-    includeHiddenNodes: false,
-  };
-
   useEffect(() => {
     nodesRef.current = nodes;
   }, [nodes]);
 
   useEffect(() => {
     if (nodes.length > 0) {
-      fitView(fitViewOptions);
+      // fitView(fitViewOptions);
     }
   }, [nodes, fitView]);
 
   return (
-    <div style={{ width: "100vw", height: "100vh" }}>
+    <div className="w-full h-screen flex flex-col bg-background graph-bg">
+      <div className="graph-header">
+        <h1>OSINT Graph for Test</h1>
+        <CustomTooltip
+          className="bg-secondary collapse-all-btn"
+          onClick={collapseToRoot}
+          content="Go back to Root nodes"
+        >
+          Collapse all
+        </CustomTooltip>
+        <CustomTooltip
+          className="bg-secondary collapse-parent-btn"
+          onClick={collapseParent}
+          content="Back to parent"
+          position="bottom"
+        >
+          Back
+        </CustomTooltip>
+      </div>
       <ReactFlow
         nodes={nodes}
         edges={edges}
@@ -457,36 +456,25 @@ const OSINTGraphInner = () => {
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
         nodeTypes={nodeTypes}
-        fitView
+        fitView={true}
         fitViewOptions={fitViewOptions}
-        defaultEdgeOptions={{ type: "default" }}
+        defaultEdgeOptions={{ type: "simplebezier" }}
       >
         <Controls />
         {/* <MiniMap /> */}
-        <Background variant="dots" gap={12} size={1} />
+        {/* <Background variant="dots" gap={12} size={1} /> */}
       </ReactFlow>
 
-      <style jsx>{`
-        .custom-node {
-          padding: 5px;
-          border-radius: 5px;
-          background: white;
-          border: 1px solid #ddd;
-          display: flex;
-          align-items: center;
-          font-size: 12px;
-        }
-        .node-icon {
-          margin-right: 5px;
-        }
-        .node-label {
-          cursor: pointer;
-        }
-        .node-childcount {
-          color: white;
-          background-color: red !important;
-        }
-      `}</style>
+      {graphStatus === "completed" ? (
+        <Button className="bg-secondary graph-report-btn" onClick={() => router.push("/dashboard")}>
+          Dashboard
+        </Button>
+      ) : (
+        <Button className="bg-secondary graph-report-btn" style={{ cursor: "progress" }}>
+          <Image src="/img/wheel-loader.gif" unoptimized width={30} height={30} alt="gears" />
+          Generating Graph please wait...
+        </Button>
+      )}
     </div>
   );
 };
