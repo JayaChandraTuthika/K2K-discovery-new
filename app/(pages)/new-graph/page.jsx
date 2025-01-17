@@ -375,7 +375,7 @@ const OSINTGraphInner = () => {
           source: parentId,
           target: node.id,
           type: "simplebezier",
-          animated: true,
+          animated: false,
           markerStart: "test",
           markerEnd: "test",
           style: {
@@ -475,7 +475,7 @@ const OSINTGraphInner = () => {
   return (
     <div className="w-full h-screen flex flex-col bg-background graph-bg">
       <div className="graph-header">
-        <h1>OSINT Graph for Test</h1>
+        <h1>K2K Discovery Graph POC</h1>
         <CustomTooltip
           className="bg-secondary collapse-all-btn"
           onClick={collapseToRoot}
@@ -508,7 +508,7 @@ const OSINTGraphInner = () => {
         {/* <Background variant="dots" gap={12} size={1} /> */}
       </ReactFlow>
 
-      {graphStatus === "completed" ? (
+      {/* {graphStatus === "completed" ? (
         <Button className="bg-secondary graph-report-btn" onClick={() => router.push("/dashboard")}>
           Dashboard
         </Button>
@@ -517,7 +517,7 @@ const OSINTGraphInner = () => {
           <Image src="/img/wheel-loader.gif" unoptimized width={30} height={30} alt="gears" />
           Generating Graph please wait...
         </Button>
-      )}
+      )} */}
     </div>
   );
 };
