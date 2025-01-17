@@ -81,7 +81,7 @@ const CustomNode = ({ data }) => {
         )}
       </div>
       <Handle type="source" position={Position.Right} style={{ backgroundColor: bgColor }} />
-      <div className="node-description">{description}</div>
+      {data.value && data.value !== "" && <div className="node-description">{data.value}</div>}
     </div>
   );
 };

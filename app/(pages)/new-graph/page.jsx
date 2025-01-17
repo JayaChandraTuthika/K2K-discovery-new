@@ -134,8 +134,8 @@ const OSINTGraphInner = () => {
   const { fitView } = useReactFlow();
 
   const collapseToRoot = () => {
-    const actionTypes = "collapse" || "expand" || "root";
-    const action = "root";
+    // const actionTypes = "collapse" || "expand" || "root";
+    // const action = "root";
     setSelectedRoot(null);
     setTimeout(() => {
       fitView(fitViewOptions);
@@ -364,7 +364,7 @@ const OSINTGraphInner = () => {
           level: level,
         },
         parentNode: parentId,
-        hidden: level > 2, //specify level here ex: level > 2
+        hidden: level > 1, //specify level here ex: level > 2
       };
 
       newNodes.push(newNode);
@@ -383,7 +383,7 @@ const OSINTGraphInner = () => {
             strokeWidth: 1,
           },
           markerEnd: { type: MarkerType.ArrowClosed, color: "#888" },
-          hidden: level > 2, //specify level here ex: level > 2
+          hidden: level > 1, //specify level here ex: level > 2
         });
       }
 
