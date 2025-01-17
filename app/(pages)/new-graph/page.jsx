@@ -445,20 +445,22 @@ const OSINTGraphInner = () => {
     }, 5000);
 
     return () => clearTimeout(timer);
-  }, [selectChildTree, treeData]);
+  }, [treeData]);
 
   // useEffect(() => {
 
   // },[])
 
   useEffect(() => {
-    if (selectedRoot) {
+    if (treeData) {
+      // if (selectedRoot) {
       selectChildTree();
+      // }
+      setTimeout(() => {
+        fitView(fitViewOptions);
+      }, 1000);
     }
-    setTimeout(() => {
-      fitView(fitViewOptions);
-    }, 1000);
-  }, [selectedRoot]);
+  }, [treeData, selectedRoot]);
 
   useEffect(() => {
     nodesRef.current = nodes;
