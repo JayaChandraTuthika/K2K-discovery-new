@@ -16,8 +16,9 @@ import ReactFlow, {
 } from "reactflow";
 import "reactflow/dist/style.css";
 import { FaUser, FaBuilding, FaGlobe, FaEnvelope, FaPhone } from "react-icons/fa";
+import { IoRadioButtonOn, IoRadioButtonOffSharp } from "react-icons/io5";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-
+import { GrRadialSelected } from "react-icons/gr";
 import { mockData } from "./mockGraphdata";
 import CustomNode from "@/components/CustomNode";
 import { Button } from "@/components/ui/button";
@@ -32,7 +33,7 @@ const CustomTooltip = ({ content, children, onClick, className }) => {
           {children}
         </TooltipTrigger>
         <TooltipContent className="bg-emerald-400 text-slate-950" side="right">
-          <p>{content}</p>
+          <p style={{ userSelect: "none" }}>{content}</p>
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>
@@ -61,22 +62,39 @@ const fitViewOptions = {
 const initialEdges = [];
 
 const findChildTree = (treeData, selectedRootId) => {
-  const rootId = selectedRootId;
-  // console.log("selected root id", rootId);
+  let path = []; // Array to store the path from root to the selected node
+
   const getChild = (node) => {
-    if (node.id === rootId) {
+    // Add the current node's label to the path
+    path.push({ label: node.data.label, value: node.data.value });
+
+    if (node.id === selectedRootId) {
+      // Found the node, return it
       return node;
     } else {
       if (node.children) {
-        let childFound;
-        node.children.forEach((ch) => {
-          if (!childFound) childFound = getChild(ch);
-        });
-        if (childFound) return childFound;
+        let childFound = null;
+        // Recursively check the children
+        for (let ch of node.children) {
+          childFound = getChild(ch);
+          if (childFound) {
+            // If the child is found, stop further recursion
+            return childFound;
+          }
+        }
       }
     }
+
+    // If the child is not found in this path, remove the current node from the path
+    path.pop();
+    return null;
   };
-  return getChild(treeData);
+
+  const result = getChild(treeData);
+
+  // Log or return the path to the child node
+  console.log("Path to the selected node:", path);
+  return { result, path };
 };
 
 const findParentTree = (treeData, selectedRootId) => {
@@ -122,6 +140,7 @@ const OSINTGraphInner = () => {
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const [treeData, setTreeData] = useState(null);
   const [selectedRoot, setSelectedRoot] = useState(null);
+  const [childPath, setChildPath] = useState([]);
   const nodesRef = useRef(nodes);
   const isProcessingRef = useRef(false);
   const [graphStatus, setGraphStatus] = useState("processing");
@@ -401,8 +420,10 @@ const OSINTGraphInner = () => {
     console.log("child selected");
 
     let filteredTree;
+    let childTreeOutput;
     if (selectedRoot) {
-      filteredTree = findChildTree(treeData, selectedRoot);
+      childTreeOutput = findChildTree(treeData, selectedRoot);
+      filteredTree = childTreeOutput.result;
     } else {
       filteredTree = treeData;
     }
@@ -410,10 +431,12 @@ const OSINTGraphInner = () => {
     const [newNodes, newEdges] = layoutNodes([filteredTree]);
     setNodes(newNodes);
     setEdges(newEdges);
+    if (childTreeOutput && childTreeOutput.path && childTreeOutput.path.length > 0) {
+      setChildPath(childTreeOutput.path);
+    }
   }, [setNodes, setEdges, selectedRoot]);
 
   const fetchGraphData = useCallback(async () => {
-    console.log("fetching");
     // if (graphId) {
     const options = {
       method: "POST",
@@ -427,7 +450,6 @@ const OSINTGraphInner = () => {
       }),
     };
     const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "fetchGraph", options);
-
     const newData = await response.json();
     // console.log(newData.graph);
     // const newData = mockData;
@@ -518,6 +540,61 @@ const OSINTGraphInner = () => {
           Generating Graph please wait...
         </Button>
       )} */}
+      <div className="child-path-container">
+        <ol class="relative text-white  border-gray-200 dark:border-gray-700 dark:text-gray-400">
+          {childPath &&
+            childPath.length > 0 &&
+            childPath.map((ch, chi) => {
+              return (
+                <li class="path-list-item ms-6" key={chi}>
+                  <span class="icon-wrapper">
+                    {chi < childPath.length - 1 ? (
+                      <IoRadioButtonOffSharp className="child-path-step-icon" />
+                    ) : (
+                      <IoRadioButtonOn className="child-path-step-icon" />
+                    )}
+                  </span>
+                  <h3 class=" font-medium leading-tight">{ch.label}</h3>
+                  {ch.value && ch.value !== "" && <p class="">{ch.value}</p>}
+                </li>
+              );
+            })}
+          {/* <li class="mb-2 ms-6">
+            <span class="icon-wrapper">
+              <IoRadioButtonOffSharp className="child-path-step-icon" />
+            </span>
+            <h3 class=" font-medium leading-tight">Confirmation</h3>
+            <p class="">Step details here</p>
+          </li>
+          <li class="mb-2 ms-6">
+            <span class="icon-wrapper">
+              <IoRadioButtonOffSharp className="child-path-step-icon" />
+            </span>
+            <h3 class=" font-medium leading-tight">Confirmation</h3>
+            <p class="">Step details here</p>
+          </li>
+          <li class="mb-2 ms-6">
+            <span class="icon-wrapper">
+              <IoRadioButtonOffSharp className="child-path-step-icon" />
+            </span>
+            <h3 class=" font-medium leading-tight">Confirmation</h3>
+            <p class="">Step details here</p>
+          </li>
+          <li class="ms-6">
+            <span class="icon-wrapper">
+              <IoRadioButtonOn className="child-path-step-icon" />
+            </span>
+            <h3 class=" font-medium leading-tight">Confirmation</h3>
+            <p class="">Step details here</p>
+          </li> */}
+        </ol>
+
+        {/* {childPath &&
+          childPath.length > 0 &&
+          childPath.map((ch, chi) => {
+            return <p key={chi}>{`${ch.label} : ${ch.value}`}</p>;
+          })} */}
+      </div>
     </div>
   );
 };

@@ -44,7 +44,7 @@ const CustomNode = ({ data }) => {
   }
 
   let description = null;
-  console.log(data.value);
+  // console.log(data.value);
   let val = data.value;
   // console.log(typeof val);
   if (typeof val === "string") {
