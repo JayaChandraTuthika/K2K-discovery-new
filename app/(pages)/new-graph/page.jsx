@@ -24,6 +24,7 @@ import CustomNode from "@/components/CustomNode";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
+import StepperComponent from "@/components/StepperComponent";
 
 const CustomTooltip = ({ content, children, onClick, className }) => {
   return (
@@ -93,6 +94,9 @@ const findChildTree = (treeData, selectedRootId) => {
   const result = getChild(treeData);
 
   // Log or return the path to the child node
+  if (path.length > 0) {
+    path.shift();
+  }
   console.log("Path to the selected node:", path);
   return { result, path };
 };
@@ -433,6 +437,8 @@ const OSINTGraphInner = () => {
     setEdges(newEdges);
     if (childTreeOutput && childTreeOutput.path && childTreeOutput.path.length > 0) {
       setChildPath(childTreeOutput.path);
+    } else {
+      setChildPath([]);
     }
   }, [setNodes, setEdges, selectedRoot]);
 
@@ -540,61 +546,8 @@ const OSINTGraphInner = () => {
           Generating Graph please wait...
         </Button>
       )} */}
-      <div className="child-path-container">
-        <ol class="relative text-white  border-gray-200 dark:border-gray-700 dark:text-gray-400">
-          {childPath &&
-            childPath.length > 0 &&
-            childPath.map((ch, chi) => {
-              return (
-                <li class="path-list-item ms-6" key={chi}>
-                  <span class="icon-wrapper">
-                    {chi < childPath.length - 1 ? (
-                      <IoRadioButtonOffSharp className="child-path-step-icon" />
-                    ) : (
-                      <IoRadioButtonOn className="child-path-step-icon" />
-                    )}
-                  </span>
-                  <h3 class=" font-medium leading-tight">{ch.label}</h3>
-                  {ch.value && ch.value !== "" && <p class="">{ch.value}</p>}
-                </li>
-              );
-            })}
-          {/* <li class="mb-2 ms-6">
-            <span class="icon-wrapper">
-              <IoRadioButtonOffSharp className="child-path-step-icon" />
-            </span>
-            <h3 class=" font-medium leading-tight">Confirmation</h3>
-            <p class="">Step details here</p>
-          </li>
-          <li class="mb-2 ms-6">
-            <span class="icon-wrapper">
-              <IoRadioButtonOffSharp className="child-path-step-icon" />
-            </span>
-            <h3 class=" font-medium leading-tight">Confirmation</h3>
-            <p class="">Step details here</p>
-          </li>
-          <li class="mb-2 ms-6">
-            <span class="icon-wrapper">
-              <IoRadioButtonOffSharp className="child-path-step-icon" />
-            </span>
-            <h3 class=" font-medium leading-tight">Confirmation</h3>
-            <p class="">Step details here</p>
-          </li>
-          <li class="ms-6">
-            <span class="icon-wrapper">
-              <IoRadioButtonOn className="child-path-step-icon" />
-            </span>
-            <h3 class=" font-medium leading-tight">Confirmation</h3>
-            <p class="">Step details here</p>
-          </li> */}
-        </ol>
 
-        {/* {childPath &&
-          childPath.length > 0 &&
-          childPath.map((ch, chi) => {
-            return <p key={chi}>{`${ch.label} : ${ch.value}`}</p>;
-          })} */}
-      </div>
+      {childPath && childPath.length > 0 && <StepperComponent childPath={childPath} />}
     </div>
   );
 };
